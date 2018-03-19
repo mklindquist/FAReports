@@ -1,0 +1,1667 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/7/2018 11:58:10 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CE-SQL2016"
+  DTS:CreatorName="CE\maria.lindquist"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{A5D10FD3-F931-452A-BCF4-45D1657558CA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="FAFunnelData"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{0AFDC00B-D50E-488A-84A7-31803E41646D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{829EEABF-04A7-4551-8135-7424E12B9C83}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="N:\FA Funnel Report\FAFunnelData.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AwardAcceptanceReq"
+              DTS:DTSID="{58624A3F-02F1-4646-A710-517AD64F6812}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MPNRequiredYN"
+              DTS:DTSID="{95F43C5E-C91B-4C7C-86AD-39A6CEA964AF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ELCRequiredYN"
+              DTS:DTSID="{70299BF9-6DCA-4E24-8707-B38652384BFB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FLEXID"
+              DTS:DTSID="{DF6AE821-0D43-44FB-AC9E-96DC8C4CCD1F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="60"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="externalId1"
+              DTS:DTSID="{D59B8EB6-B163-40F3-BEEB-ACF0AE97AF46}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DependentStatus"
+              DTS:DTSID="{C58AECB6-F4BD-4037-A505-B281D39DE47B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FederalAwardYear"
+              DTS:DTSID="{CD20B2B8-C423-4A82-8798-899138478CB0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FAFSACompletedYN"
+              DTS:DTSID="{815352B5-520F-4E94-B22D-64DDE10FC243}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FAFSACompletedDate"
+              DTS:DTSID="{CC3C8E6C-E01B-421A-8D5C-F5A408D114F2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstISIRTransDate"
+              DTS:DTSID="{221E72B0-9376-4F6A-A27D-2F3645859701}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LastISIRTransDate"
+              DTS:DTSID="{CC545AA9-A851-4EF4-AD49-891BD0CFB2BA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstISIRImportDate"
+              DTS:DTSID="{C5F12ED8-5AB6-428A-8C5C-7AA5D0B6CDEB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LastISIRImportDate"
+              DTS:DTSID="{1E2EFBCF-E04F-4B80-B352-E9DE6FFCFED6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SelectedForVerification"
+              DTS:DTSID="{AD1F1809-C71C-4681-96FB-4D2B1F87D1D6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="VerifiedCompleteDate"
+              DTS:DTSID="{10A30505-4F08-4A18-B9AA-F4BEBEA6452B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstAwardedDate"
+              DTS:DTSID="{C5819836-1487-4037-B234-3D9E5DE5DB06}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AcceptedYN"
+              DTS:DTSID="{48B5497C-C586-4315-9CA2-763849CBA759}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AcceptedDate"
+              DTS:DTSID="{00EF4462-97AF-453A-B52A-BB97B1EF8D33}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ELCCompletedYN"
+              DTS:DTSID="{72D55093-C3B5-430F-8962-25EA9316E27F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ELCCompletedDate"
+              DTS:DTSID="{FA01CBAA-B4EC-4E17-B13D-930BB16F01AA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MPNCompletedYN"
+              DTS:DTSID="{599E8DF3-673D-47C5-A519-A18C60D89FD3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MPNCompletedDate"
+              DTS:DTSID="{361DB305-FA4A-4A61-9D58-8911817D3E49}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DisbursedYN"
+              DTS:DTSID="{0A4DA1C9-A0D2-42A0-ACA7-42BA48D74677}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="19"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstDisbDate"
+              DTS:DTSID="{0BFFEAE3-32DE-498E-9D2C-632660548D54}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Federal Pell Grant"
+              DTS:DTSID="{20B440E4-5CA1-45D9-A01C-56BD8256CFEC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Federal Direct Subsidized Loan"
+              DTS:DTSID="{DF3A68C2-31FB-4E61-B58D-3A8E68C12FA7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Federal Direct Unsubsidized Loan"
+              DTS:DTSID="{228035A0-6D6E-4D12-8D0E-ECCAACC559FB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Federal Direct Parent PLUS"
+              DTS:DTSID="{86B37B68-2D80-42BC-A9B9-2D9969E4D395}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Private Alternative Loan 1"
+              DTS:DTSID="{84F1A8D4-1A84-4227-8658-A209D6D019F4}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F407E23E-FD54-4A32-9C0D-057A1D98ED0C}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.11.10.72\UWEXDV;User ID=uwex_rem_prod_rpt;Initial Catalog=uwex_rem_prod_rpt;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOlMYTNAEQUKr6VDI+5l2CgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADxl9HXBrnXabrRGn5VrV31AAAAAASAAACgAAAAEAAAAGqpgUkX/nKXTevfEQQ3SVkoAAAAFp1JOsP52nphuXB8fhsfXVYbfIxOVxCeLq0H7CY720w2h81alZb2cRQAAADNiq/3cwNmETwNw6lzEbtzwzcy0g</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{5EB3B3F2-4826-4785-9632-A102619BCBD9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Destination - FA_FUNNEL_DATA_csv"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[AwardAcceptanceReq]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="AwardAcceptanceReq"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[AwardAcceptanceReq]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AwardAcceptanceReq]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[MPNRequiredYN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="MPNRequiredYN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[MPNRequiredYN]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNRequiredYN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[ELCRequiredYN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ELCRequiredYN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[ELCRequiredYN]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCRequiredYN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FLEXID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="FLEXID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FLEXID]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FLEXID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[externalId1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="60"
+                      cachedName="externalId1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[externalId1]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[externalId1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[DependentStatus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="DependentStatus"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[DependentStatus]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DependentStatus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FederalAwardYear]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="FederalAwardYear"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FederalAwardYear]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FederalAwardYear]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FAFSACompletedYN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="FAFSACompletedYN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FAFSACompletedYN]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FAFSACompletedYN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FAFSACompletedDate]"
+                      cachedDataType="dbDate"
+                      cachedName="FAFSACompletedDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FAFSACompletedDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FAFSACompletedDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FirstISIRTransDate]"
+                      cachedDataType="dbDate"
+                      cachedName="FirstISIRTransDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstISIRTransDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstISIRTransDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[LastISIRTransDate]"
+                      cachedDataType="dbDate"
+                      cachedName="LastISIRTransDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[LastISIRTransDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[LastISIRTransDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FirstISIRImportDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="FirstISIRImportDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstISIRImportDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstISIRImportDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[LastISIRImportDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="LastISIRImportDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[LastISIRImportDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[LastISIRImportDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[SelectedForVerification]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="SelectedForVerification"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[SelectedForVerification]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SelectedForVerification]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[VerifiedCompleteDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="VerifiedCompleteDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[VerifiedCompleteDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[VerifiedCompleteDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FirstAwardedDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="FirstAwardedDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstAwardedDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstAwardedDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[AcceptedYN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="AcceptedYN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[AcceptedYN]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AcceptedYN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[AcceptedDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="AcceptedDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[AcceptedDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AcceptedDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[ELCCompletedYN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="ELCCompletedYN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[ELCCompletedYN]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCCompletedYN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[ELCCompletedDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="ELCCompletedDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[ELCCompletedDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCCompletedDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[MPNCompletedYN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="MPNCompletedYN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[MPNCompletedYN]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNCompletedYN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[MPNCompletedDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="MPNCompletedDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[MPNCompletedDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNCompletedDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[DisbursedYN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="DisbursedYN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[DisbursedYN]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DisbursedYN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[FirstDisbDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="19"
+                      cachedName="FirstDisbDate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstDisbDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstDisbDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[Federal Pell Grant]"
+                      cachedDataType="r8"
+                      cachedName="Federal Pell Grant"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Pell Grant]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Pell Grant]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[Federal Direct Subsidized Loan]"
+                      cachedDataType="r8"
+                      cachedName="Federal Direct Subsidized Loan"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Direct Subsidized Loan]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Subsidized Loan]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[Federal Direct Unsubsidized Loan]"
+                      cachedDataType="r8"
+                      cachedName="Federal Direct Unsubsidized Loan"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Direct Unsubsidized Loan]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Unsubsidized Loan]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[Federal Direct Parent PLUS]"
+                      cachedDataType="r8"
+                      cachedName="Federal Direct Parent PLUS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Direct Parent PLUS]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Parent PLUS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].Columns[Private Alternative Loan 1]"
+                      cachedDataType="r8"
+                      cachedName="Private Alternative Loan 1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Private Alternative Loan 1]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Private Alternative Loan 1]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[AwardAcceptanceReq]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AwardAcceptanceReq" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[MPNRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MPNRequiredYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[ELCRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ELCRequiredYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FLEXID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="FLEXID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[externalId1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="externalId1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[DependentStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DependentStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FederalAwardYear]"
+                      dataType="wstr"
+                      length="200"
+                      name="FederalAwardYear" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FAFSACompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="FAFSACompletedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FAFSACompletedDate]"
+                      dataType="dbDate"
+                      name="FAFSACompletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstISIRTransDate]"
+                      dataType="dbDate"
+                      name="FirstISIRTransDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[LastISIRTransDate]"
+                      dataType="dbDate"
+                      name="LastISIRTransDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="FirstISIRImportDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[LastISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="LastISIRImportDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[SelectedForVerification]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SelectedForVerification" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[VerifiedCompleteDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="VerifiedCompleteDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstAwardedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="FirstAwardedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[AcceptedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AcceptedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[AcceptedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AcceptedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[ELCCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ELCCompletedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[ELCCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="ELCCompletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[MPNCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MPNCompletedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[MPNCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="MPNCompletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[DisbursedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="DisbursedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[FirstDisbDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="FirstDisbDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Pell Grant]"
+                      dataType="r8"
+                      name="Federal Pell Grant" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Direct Subsidized Loan]"
+                      dataType="r8"
+                      name="Federal Direct Subsidized Loan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Direct Unsubsidized Loan]"
+                      dataType="r8"
+                      name="Federal Direct Unsubsidized Loan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Federal Direct Parent PLUS]"
+                      dataType="r8"
+                      name="Federal Direct Parent PLUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input].ExternalColumns[Private Alternative Loan 1]"
+                      dataType="r8"
+                      name="Private Alternative Loan 1" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - Query"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - Query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">(SELECT CASE WHEN ([Federal Direct Subsidized Loan] &gt; 0  or [Federal Direct Unsubsidized Loan] &gt; 0) AND ([Federal Pell Grant] = 0 OR [Federal Pell Grant] is null )   then '1' 
+             WHEN ([Federal Direct Subsidized Loan] &gt; 0  or [Federal Direct Unsubsidized Loan] &gt; 0) AND ([Federal Pell Grant] &gt; 0) Then '1'
+			 else '0' end as AwardAcceptanceReq
+	    ,CASE WHEN ([Federal Direct Subsidized Loan] &gt; 0  or [Federal Direct Unsubsidized Loan] &gt; 0) AND ([Federal Pell Grant] = 0 OR [Federal Pell Grant] is null) AND (MPNCompletedDate is null)   then '1' 
+             WHEN ([Federal Direct Subsidized Loan] &gt; 0  or [Federal Direct Unsubsidized Loan] &gt; 0) AND ([Federal Pell Grant] &gt; 0 and (MPNCompletedDate is null)) Then '1'
+			 else '0' end as MPNRequiredYN 
+		,CASE WHEN ([Federal Direct Subsidized Loan] &gt; 0  or [Federal Direct Unsubsidized Loan] &gt; 0) AND ([Federal Pell Grant] = 0 OR [Federal Pell Grant] is null) AND (ELCCompletedDate is null)   then '1' 
+             WHEN ([Federal Direct Subsidized Loan] &gt; 0  or [Federal Direct Unsubsidized Loan] &gt; 0) AND ([Federal Pell Grant] &gt; 0 and (ELCCompletedDate is null)) Then '1'
+			 else '0' end as ELCRequiredYN 
+			 , * FROM 
+(SELECT DISTINCT iv.externalId3 as FLEXID
+, iv.externalId1
+,CASE (select iv2.primaryEFCType from dataExtract_ISIR_View iv2
+		where iv2.activeISIR = '1'
+		and iv2.studentId = iv.studentId
+		and iv2.federalAwardYearName = iv.federalAwardYearName)
+	   WHEN   '1' THEN 'Dependent'
+	   WHEN   '2' THEN 'Independent without Dependents'
+	   WHEN   '3' THEN 'Independent with Dependents'
+	   WHEN   '4' THEN 'Dependent'
+	   WHEN  '5' THEN 'Independent without Dependents'
+	   WHEN  '6' THEN 'Independent with Dependents'
+	   ELSE NULL END AS DependentStatus
+, iv.federalAwardYearName AS FederalAwardYear
+, '1' AS FAFSACompletedYN
+, CAST(CAST(iv.dateApplicationCompleted AS CHAR(8)) AS DATE) AS FAFSACompletedDate
+, (SELECT  CAST(CAST(MIN(ivi2.transactionProcessedDate) AS CHAR(8)) AS DATE) 
+		FROM dataExtract_ISIR_View ivi2 
+		WHERE ivi2.studentid = iv.studentid 
+		AND ivi2.federalAwardYearName = iv.federalAwardYearName) AS FirstISIRTransDate
+, (SELECT  CAST(CAST(MAX(ivi.transactionProcessedDate) AS CHAR(8)) AS DATE) 
+		FROM dataExtract_ISIR_View ivi 
+		WHERE ivi.studentid = iv.studentid 
+		AND ivi.federalAwardYearName = iv.federalAwardYearName) AS LastISIRTransDate
+, (SELECT  MIN(CONVERT(VARCHAR(19),ivi3.createdOn,120)) 
+		FROM dataExtract_ISIR_View ivi3 
+		WHERE ivi3.studentid = iv.studentid 
+		AND ivi3.federalAwardYearName = iv.federalAwardYearName) AS FirstISIRImportDate
+, (SELECT  MAX(CONVERT(VARCHAR(19),ivi4.createdOn,120)) 
+		FROM dataExtract_ISIR_View ivi4 
+		WHERE ivi4.studentid = iv.studentid 
+		AND ivi4.federalAwardYearName = iv.federalAwardYearName) AS LastISIRImportDate
+, CASE ivi5.studentIsSelectedForVerification WHEN 'Y' THEN '1' ELSE '0' END AS SelectedForVerification
+, CASE ivi5.studentIsSelectedForVerification WHEN 'Y' THEN 
+			(SELECT DISTINCT MAX(CONVERT(VARCHAR(19),dr1.reviewedDate,120))
+				FROM dataExtract_DocumentRequirement_View dr1
+				WHERE dr1.studentId = iv.studentid
+				AND dr1.status in ('SATISFIED','WAIVED')
+				AND dr1.documentExternalId not in ('FAELC','FAMPN','FAMPNPLUS','FAEXC')
+				AND ((dr1.scopeValue = iv.federalAwardYearName)
+				OR (dr1.scopeValue ='Student'))
+				AND NOT EXISTS (SELECT 'X' FROM dataExtract_DocumentRequirement_View c
+					WHERE c.studentId = dr1.studentId
+					and c.status = 'NEEDED'
+					and c.documentScopeCode = 'STUDENT')
+				AND NOT EXISTS (SELECT 'x' FROM dataExtract_DocumentRequirement_View b	
+					WHERE b.studentId = dr1.studentId
+					AND b.scopeValue = dr1.scopeValue
+					AND b.status = 'NEEDED'
+					AND b.documentExternalId  not in ('FAELC','FAMPN','FAMPNPLUS','FAEXC')
+	)) ELSE 'NULL' END AS VerifiedCompleteDate
+,(SELECT MIN(CONVERT(VARCHAR(19),ad.offeredOnDate,120)) 
+		FROM AwardData ad
+		where ad.studentId = iv.studentId
+		and ad.federalAwardYear = iv.federalAwardYearName)
+		 AS FirstAwardedDate
+,CASE WHEN (SELECT sum(av1.acceptedAmount) FROM dataExtract_Award_View_v002 av1, dataExtract_LoanPeriod_View_v001 lv1
+		 WHERE av1.studentId = av.studentId 
+		 AND av1.loanPeriodId = lv1.loanPeriodId
+		 AND lv1.federalAwardYear = iv.federalAwardYearName) &gt; 0 THEN '1' ELSE '0'END AS AcceptedYN
+, '' AS AcceptedDate
+, CASE WHEN dr2.status = 'SATISFIED' THEN '1' ELSE '0'END AS ELCCompletedYN
+, CONVERT(VARCHAR(19),dr2.reviewedDate,120) AS ELCCompletedDate
+, CASE WHEN dr3.status = 'SATISFIED'  THEN '1' ELSE '0'END AS MPNCompletedYN
+, CONVERT(VARCHAR(19),dr3.reviewedDate,120) AS MPNCompletedDate
+, CASE WHEN (SELECT sum(av2.paidAmount) FROM dataExtract_Award_View_v002 av2, dataExtract_LoanPeriod_View_v001 lv2
+		 WHERE av2.studentId = av.studentId 
+		 AND av2.loanPeriodId = lv2.loanPeriodId
+		 AND lv2.federalAwardYear = iv.federalAwardYearName) &gt; 0 THEN '1' ELSE '0'END AS DisbursedYN
+, (SELECT  MIN(CONVERT(VARCHAR(19),adv.disbursement_scheduledDate,120)) 
+		FROM dataExtract_AwardDisbursement_View adv
+		WHERE adv.studentId = iv.studentId
+		and adv.awardPeriod_federalAwardYear = iv.federalAwardYearName
+		and adv.disbursement_disbursementStatusCode = 'Paid') As FirstDisbDate
+, av.fund_name AS FundName
+, av.offeredAmount AS OfferAmt
+FROM  dataExtract_ISIR_View ivi5
+inner join dataExtract_ISIR_View iv
+ON (ivi5.studentId = iv.studentId)
+	and ivi5.federalAwardYearName = iv.federalAwardYearName
+	--and iv.externalId1 = '1139495MIL'
+	and ivi5.activeISIR = '1'
+	--and ivi5.transactionProcessedDate = (SELECT max(ivi5a.transactionProcessedDate)
+	--									FROM dataExtract_ISIR_View ivi5a 
+	--									WHERE ivi5a.studentid = ivi5.studentid 
+	--									AND ivi5a.federalAwardYearName = ivi5.federalAwardYearName)
+left outer join AwardData AS av
+on (iv.studentid = av.studentid)
+--where iv.studentId = av.studentId
+and iv.federalAwardYearName = av.federalAwardYear
+LEFT OUTER JOIN dataExtract_DocumentRequirement_View AS dr2
+ON (iv.studentid = dr2.studentid)
+and dr2.documentExternalId = 'FAELC'
+LEFT OUTER JOIN dataExtract_DocumentRequirement_View AS dr3
+ON (iv.studentid = dr3.studentid)
+--AND dr3.documentExternalId in ('FAMPN','FAMPNPLUS')
+AND dr3.documentExternalId in ('FAMPN')
+--where iv.externalId1 = '1236428COL'
+) AS Maria
+PIVOT (
+	SUM(OfferAmt)
+	FOR FundName
+	IN ([Federal Pell Grant]
+,[Federal Direct Subsidized Loan]
+,[Federal Direct Unsubsidized Loan]
+,[Federal Direct Parent PLUS]
+,[Private Alternative Loan 1]
+)) AS PivotTable)
+;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - Query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AwardAcceptanceReq]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AwardAcceptanceReq]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AwardAcceptanceReq]"
+                      name="AwardAcceptanceReq"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MPNRequiredYN]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNRequiredYN]"
+                      name="MPNRequiredYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ELCRequiredYN]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCRequiredYN]"
+                      name="ELCRequiredYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FLEXID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FLEXID]"
+                      length="60"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FLEXID]"
+                      name="FLEXID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[externalId1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[externalId1]"
+                      length="60"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[externalId1]"
+                      name="externalId1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DependentStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[DependentStatus]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DependentStatus]"
+                      name="DependentStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FederalAwardYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FederalAwardYear]"
+                      length="200"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FederalAwardYear]"
+                      name="FederalAwardYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FAFSACompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FAFSACompletedYN]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FAFSACompletedYN]"
+                      name="FAFSACompletedYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FAFSACompletedDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FAFSACompletedDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FAFSACompletedDate]"
+                      name="FAFSACompletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstISIRTransDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstISIRTransDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstISIRTransDate]"
+                      name="FirstISIRTransDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[LastISIRTransDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[LastISIRTransDate]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[LastISIRTransDate]"
+                      name="LastISIRTransDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstISIRImportDate]"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstISIRImportDate]"
+                      name="FirstISIRImportDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[LastISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[LastISIRImportDate]"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[LastISIRImportDate]"
+                      name="LastISIRImportDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SelectedForVerification]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SelectedForVerification]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[SelectedForVerification]"
+                      name="SelectedForVerification"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[VerifiedCompleteDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[VerifiedCompleteDate]"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[VerifiedCompleteDate]"
+                      name="VerifiedCompleteDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstAwardedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstAwardedDate]"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstAwardedDate]"
+                      name="FirstAwardedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AcceptedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AcceptedYN]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AcceptedYN]"
+                      name="AcceptedYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AcceptedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AcceptedDate]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[AcceptedDate]"
+                      name="AcceptedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ELCCompletedYN]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCCompletedYN]"
+                      name="ELCCompletedYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ELCCompletedDate]"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[ELCCompletedDate]"
+                      name="ELCCompletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MPNCompletedYN]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNCompletedYN]"
+                      name="MPNCompletedYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MPNCompletedDate]"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[MPNCompletedDate]"
+                      name="MPNCompletedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DisbursedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[DisbursedYN]"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[DisbursedYN]"
+                      name="DisbursedYN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstDisbDate]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstDisbDate]"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[FirstDisbDate]"
+                      name="FirstDisbDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Pell Grant]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Pell Grant]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Pell Grant]"
+                      name="Federal Pell Grant"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Subsidized Loan]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Direct Subsidized Loan]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Subsidized Loan]"
+                      name="Federal Direct Subsidized Loan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Unsubsidized Loan]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Direct Unsubsidized Loan]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Unsubsidized Loan]"
+                      name="Federal Direct Unsubsidized Loan"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Parent PLUS]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Direct Parent PLUS]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Federal Direct Parent PLUS]"
+                      name="Federal Direct Parent PLUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Private Alternative Loan 1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Private Alternative Loan 1]"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].Columns[Private Alternative Loan 1]"
+                      name="Private Alternative Loan 1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AwardAcceptanceReq]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AwardAcceptanceReq" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MPNRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MPNRequiredYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ELCRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ELCRequiredYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FLEXID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="FLEXID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[externalId1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      name="externalId1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[DependentStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="DependentStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FederalAwardYear]"
+                      dataType="wstr"
+                      length="200"
+                      name="FederalAwardYear" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FAFSACompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="FAFSACompletedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FAFSACompletedDate]"
+                      dataType="dbDate"
+                      name="FAFSACompletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstISIRTransDate]"
+                      dataType="dbDate"
+                      name="FirstISIRTransDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[LastISIRTransDate]"
+                      dataType="dbDate"
+                      name="LastISIRTransDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="FirstISIRImportDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[LastISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="LastISIRImportDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[SelectedForVerification]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="SelectedForVerification" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[VerifiedCompleteDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="VerifiedCompleteDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstAwardedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="FirstAwardedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AcceptedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AcceptedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[AcceptedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="AcceptedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ELCCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="ELCCompletedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[ELCCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="ELCCompletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MPNCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="MPNCompletedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[MPNCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="MPNCompletedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[DisbursedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="DisbursedYN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[FirstDisbDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      name="FirstDisbDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Pell Grant]"
+                      dataType="r8"
+                      name="Federal Pell Grant" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Direct Subsidized Loan]"
+                      dataType="r8"
+                      name="Federal Direct Subsidized Loan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Direct Unsubsidized Loan]"
+                      dataType="r8"
+                      name="Federal Direct Unsubsidized Loan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Federal Direct Parent PLUS]"
+                      dataType="r8"
+                      name="Federal Direct Parent PLUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output].ExternalColumns[Private Alternative Loan 1]"
+                      dataType="r8"
+                      name="Private Alternative Loan 1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AwardAcceptanceReq]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AwardAcceptanceReq]"
+                      name="AwardAcceptanceReq" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MPNRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MPNRequiredYN]"
+                      name="MPNRequiredYN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ELCRequiredYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ELCRequiredYN]"
+                      name="ELCRequiredYN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FLEXID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FLEXID]"
+                      name="FLEXID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[externalId1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="60"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[externalId1]"
+                      name="externalId1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[DependentStatus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[DependentStatus]"
+                      name="DependentStatus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FederalAwardYear]"
+                      dataType="wstr"
+                      length="200"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FederalAwardYear]"
+                      name="FederalAwardYear" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FAFSACompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FAFSACompletedYN]"
+                      name="FAFSACompletedYN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FAFSACompletedDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FAFSACompletedDate]"
+                      name="FAFSACompletedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstISIRTransDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstISIRTransDate]"
+                      name="FirstISIRTransDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[LastISIRTransDate]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[LastISIRTransDate]"
+                      name="LastISIRTransDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstISIRImportDate]"
+                      name="FirstISIRImportDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[LastISIRImportDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[LastISIRImportDate]"
+                      name="LastISIRImportDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SelectedForVerification]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[SelectedForVerification]"
+                      name="SelectedForVerification" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[VerifiedCompleteDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[VerifiedCompleteDate]"
+                      name="VerifiedCompleteDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstAwardedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstAwardedDate]"
+                      name="FirstAwardedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AcceptedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AcceptedYN]"
+                      name="AcceptedYN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AcceptedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[AcceptedDate]"
+                      name="AcceptedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ELCCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ELCCompletedYN]"
+                      name="ELCCompletedYN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ELCCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ELCCompletedDate]"
+                      name="ELCCompletedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MPNCompletedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MPNCompletedYN]"
+                      name="MPNCompletedYN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MPNCompletedDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[MPNCompletedDate]"
+                      name="MPNCompletedDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[DisbursedYN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[DisbursedYN]"
+                      name="DisbursedYN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstDisbDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="19"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[FirstDisbDate]"
+                      name="FirstDisbDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Pell Grant]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Pell Grant]"
+                      name="Federal Pell Grant" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Direct Subsidized Loan]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Direct Subsidized Loan]"
+                      name="Federal Direct Subsidized Loan" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Direct Unsubsidized Loan]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Direct Unsubsidized Loan]"
+                      name="Federal Direct Unsubsidized Loan" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Direct Parent PLUS]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Federal Direct Parent PLUS]"
+                      name="Federal Direct Parent PLUS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Private Alternative Loan 1]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[Private Alternative Loan 1]"
+                      name="Private Alternative Loan 1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - Query.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Data Flow Task 1\Source - Query"
+          TopLeft="56,5.5" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Data Flow Task 1\Destination - FA_FUNNEL_DATA_csv"
+          TopLeft="5.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="131,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Source - Query">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
-  <Description>Antic Aid (Regent) with Acct Bal (SIS) for UWMIL - ALL Balances</Description>
+  <Description>Antic Aid (Regent) with Acct Bal (SIS) for UWCOL - ALL Balances</Description>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <Author>Maria K Lindquist</Author>
   <AutoRefresh>0</AutoRefresh>
@@ -30,7 +30,7 @@
 , a.[Amount Due] as Balance
 , c.veteranStatusName
 , CASE WHEN a.[Amount Due] &gt; 0 Then 'YES' Else 'NO' END as DropClasses
-from [dbo].[FLEXAcctBalancesUWM] a
+from [dbo].[FLEXAcctBalancesUWC] a
 , dbo.dataExtract_Student_View b
 , dbo.dataExtract_StudentDetail_View c 
 where  b.externalID2 = a.ID
@@ -45,7 +45,7 @@ and not exists (select 'x' from dbo.dataExtract_AwardDisbursement_View d
       on studentsWithBreakIssues.studentId = b.studentId
 where  b.externalID2 = d.externalID2
    and d.externalID2 =  a.ID
-   and d.locationExternalId = 'UWMIL'
+   and d.locationExternalId = 'UWCOL'
    and d.disbursement_disbursementStatusCode = 'Scheduled'
    and d.award_awardStatusCode = 'ACCEPTED'
    and case when d.disbursement_adjustedReleaseDate IS NULL then d.disbursement_scheduledDate 
@@ -53,7 +53,7 @@ where  b.externalID2 = d.externalID2
 			else d.disbursement_adjustedReleaseDate end END &lt; DateAdd(month,1,CONVERT(datetime,convert(varchar(6),getdate(),112)+'02',112))
    and exists (select 'x' from dataExtract_CourseData_View xy
 			where xy.externalId1 = d.externalId1
-			and xy.startDate = CONVERT(datetime,convert(varchar(6),getdate(),112)+'02',112)
+			and xy.startDate =CONVERT(datetime,convert(varchar(6),getdate(),112)+'02',112)
 			and xy.withdrawalDate IS NULL)
    and (('5' + SUBSTRING(convert(char(8),case when d.disbursement_adjustedReleaseDate IS NULL then d.disbursement_scheduledDate 
 										   else case when convert(varchar(8),d.disbursement_adjustedReleaseDate,112) = 20161001 then d.disbursement_scheduledDate 
@@ -78,8 +78,8 @@ select distinct c.externalID1 as RegentID
 , sum(c.disbursement_netAmount) as AnticipAid
 , a.[Amount Due] - sum(c.disbursement_netAmount) as Balance
 , d.veteranStatusName
-, CASE WHEN a.[Amount Due] - sum(c.disbursement_netAmount) &gt; 0 then 'YES' Else 'NO' END as DropClasses
-from [dbo].[FLEXAcctBalancesUWM] a
+, CASE WHEN a.[Amount Due] - sum(distinct c.disbursement_netAmount) &gt; 0 then 'YES' Else 'NO' END as DropClasses
+from [dbo].[FLEXAcctBalancesUWC] a
 , dbo.dataExtract_AwardDisbursement_View c
 , dbo.dataExtract_StudentDetail_View d
 , dbo.dataExtract_Student_View b
@@ -92,7 +92,7 @@ LEFT JOIN (select adv.studentId
       on studentsWithBreakIssues.studentId = b.studentId
 where  b.externalID2 = c.externalID2
    and c.externalID2 =  a.ID
-   and c.locationExternalId = 'UWMIL'
+   and c.locationExternalId = 'UWCOL'
    and c.disbursement_disbursementStatusCode = 'Scheduled'
    and c.award_awardStatusCode = 'ACCEPTED'
 and c.externalID2 = d.externalID2 
@@ -126,6 +126,10 @@ group by c.externalId1
 , a.[Amount Due];</CommandText>
       </Query>
       <Fields>
+        <Field Name="VeteranStatusName">
+          <DataField>VeteranStatusName</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
         <Field Name="RegentID">
           <DataField>RegentID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -182,10 +186,6 @@ group by c.externalId1
           <DataField>DropClasses</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="VeteranStatusName">
-          <DataField>VeteranStatusName</DataField>
-          <rd:UserDefined>true</rd:UserDefined>
-        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -211,7 +211,7 @@ group by c.externalId1
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Fields!Term.Value</Value>
+                    <Value>=First(Fields!Term.Value, "DataSet1")</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
@@ -222,7 +222,7 @@ group by c.externalId1
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value> -- UWMIL</Value>
+                    <Value> - UWCOL</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
@@ -1520,7 +1520,7 @@ group by c.externalId1
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>0.86in</Height>
+        <Height>0.90167in</Height>
         <Style />
       </Body>
       <Width>15in</Width>

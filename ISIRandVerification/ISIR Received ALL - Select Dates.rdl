@@ -23,10 +23,22 @@
             <Value>=Parameters!ToDate.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        a.createdOn, a.externalId1 AS RegentID, a.externalId2 AS EMPLID, a.externalId3 AS FlexID, b.LastName, b.FirstName, a.verificationStatusName,                         a.federalAwardYearName, a.transactionNumber, a.transactionProcessedDate
-FROM            dataExtract_ISIR_View AS a INNER JOIN
-                         dataExtract_Student_View AS b ON a.externalId1 = b.externalId1
-WHERE        (a.createdOn BETWEEN @DateFrom and @ToDate )</CommandText>
+        <CommandText>-- This shows ISIR that have been received between a range of dates
+-- Maria Lindquist
+SELECT a.createdOn
+, a.externalId1 AS RegentID
+, a.externalId2 AS EMPLID
+, a.externalId3 AS FlexID
+, b.LastName
+, b.FirstName
+, a.verificationStatusName
+, a.federalAwardYearName
+, a.transactionNumber
+, a.transactionProcessedDate
+FROM    dataExtract_ISIR_View AS a 
+INNER JOIN dataExtract_Student_View AS b
+ ON a.externalId1 = b.externalId1
+WHERE a.createdOn BETWEEN @DateFrom AND @ToDate</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -1484,11 +1496,11 @@ WHERE        (a.createdOn BETWEEN @DateFrom and @ToDate )</CommandText>
   </ReportSections>
   <ReportParameters>
     <ReportParameter Name="DateFrom">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>Date From</Prompt>
     </ReportParameter>
     <ReportParameter Name="ToDate">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>To Date</Prompt>
     </ReportParameter>
   </ReportParameters>

@@ -222,7 +222,7 @@ group by c.externalId1
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value> - UWMIL</Value>
+                    <Value> -- UWMIL</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>

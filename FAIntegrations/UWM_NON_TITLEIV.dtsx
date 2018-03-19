@@ -1,0 +1,785 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/21/2018 2:23:21 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CE-SQL2016"
+  DTS:CreatorName="CE\maria.lindquist"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{9AD1E551-E860-46A4-9706-9843B16BD95D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="UWM_NON_TITLEIV"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{E615AC4F-9C3D-4853-8BE8-92FE2BFAED09}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EA03ACF0-15BB-4BF7-9483-A84ECFCD81C5}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.11.10.72\UWEXDV;User ID=uwex_rem_prod_rpt;Initial Catalog=uwex_rem_prod_rpt;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOlMYTNAEQUKr6VDI+5l2CgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACgV9fq6rs/8ZtA8aLh6OVXAAAAAASAAACgAAAAEAAAAN9CCq72WoB/VC/DLLFWtqQoAAAAMByCxDbdfs689ZvidmuW7b553v1J8q6PvwvNX7nmJb/Z5pW5WB/VWxQAAAAGSj/lxnimaufB5oiqLDktLsgP3w</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{14B58E6F-FB8D-4DF4-B6B3-F3ED6F967823}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="F:\prod\IPEDS\UWM_NON_TITLEIV.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ID"
+              DTS:DTSID="{331D046A-426D-4209-847C-1909ED42B611}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Descr"
+              DTS:DTSID="{FC64D647-35CE-4A3C-B722-A343B4B409F5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemType"
+              DTS:DTSID="{44850D29-B477-40F2-9533-34BDB702D0A1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemAmt"
+              DTS:DTSID="{10A85372-E337-4F5D-AA2E-9EE4FCC3DB32}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemTerm"
+              DTS:DTSID="{AB344B93-C6D5-425C-87DA-65FF9136B5E8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AidYr"
+              DTS:DTSID="{BB731AF6-E07B-4AA7-8046-58394A80CEF5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItemCode"
+              DTS:DTSID="{3D0B4D10-F537-47CE-95D3-D006DF3C753B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ItmEffDt"
+              DTS:DTSID="{31632EF0-F618-4D4D-8740-A15EEAFB81A7}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{25E3277F-3E2B-4E2C-B329-DA25965232D0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - UWM_NON_TITLEIV"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[UWM_NON_TITLEIV]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[ID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[Descr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Descr"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[Descr]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[Descr]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[ItemType]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ItemType"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemType]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemType]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[ItemAmt]"
+                      cachedDataType="numeric"
+                      cachedName="ItemAmt"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemAmt]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemAmt]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[ItemTerm]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ItemTerm"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemTerm]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemTerm]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[AidYr]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AidYr"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[AidYr]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[AidYr]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[ItemCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ItemCode"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemCode]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].Columns[ItmEffDt]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ItmEffDt"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItmEffDt]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItmEffDt]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[Descr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Descr" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItemType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemAmt]"
+                      dataType="numeric"
+                      name="ItemAmt"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemTerm]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItemTerm" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[AidYr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AidYr" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItemCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItemCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input].ExternalColumns[ItmEffDt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItmEffDt" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Source - UWM_NON_TITLEIV_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ID]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[Descr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[Descr]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[Descr]"
+                      name="Descr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemType]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemType]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemType]"
+                      name="ItemType"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemAmt]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemAmt]"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemAmt]"
+                      name="ItemAmt"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemTerm]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemTerm]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemTerm]"
+                      name="ItemTerm"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[AidYr]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[AidYr]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[AidYr]"
+                      name="AidYr"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemCode]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItemCode]"
+                      name="ItemCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItmEffDt]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItmEffDt]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].Columns[ItmEffDt]"
+                      name="ItmEffDt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[Descr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Descr" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemType]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItemType" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemAmt]"
+                      dataType="numeric"
+                      name="ItemAmt"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemTerm]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItemTerm" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[AidYr]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AidYr" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItemCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItemCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output].ExternalColumns[ItmEffDt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ItmEffDt" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task 1\Destination - UWM_NON_TITLEIV.Inputs[Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task 1\Source - UWM_NON_TITLEIV_csv.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop table(s) SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{978E97E6-0D3D-4803-92D3-7B9DFE573B09}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop table(s) SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EA03ACF0-15BB-4BF7-9483-A84ECFCD81C5}"
+          SQLTask:SqlStatementSource="drop table [dbo].[UWM_NON_TITLEIV]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{448DD02D-3F9D-4FCC-AC2B-EF2CAC395A86}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EA03ACF0-15BB-4BF7-9483-A84ECFCD81C5}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[UWM_NON_TITLEIV] (&#xA;[ID] varchar(50),&#xA;[Descr] varchar(50),&#xA;[ItemType] varchar(50),&#xA;[ItemAmt] numeric(18,0),&#xA;[ItemTerm] varchar(50),&#xA;[AidYr] varchar(50),&#xA;[ItemCode] varchar(50),&#xA;[ItmEffDt] varchar(50)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{A8A88088-F793-4924-929C-00AD02270028\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{A8A88088-F793-4924-929C-00AD02270028}"
+      DTS:From="Package\Drop table(s) SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{A8A88088-F793-4924-929C-00AD02270028}"
+      DTS:To="Package\Preparation SQL Task 1"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{FF07A146-A6C5-4B85-A9F3-8CAFE2F2F6CB\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{FF07A146-A6C5-4B85-A9F3-8CAFE2F2F6CB}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{FF07A146-A6C5-4B85-A9F3-8CAFE2F2F6CB}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="24.5,209.5" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Drop table(s) SQL Task 1"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="9.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{A8A88088-F793-4924-929C-00AD02270028\}]"
+          TopLeft="104.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,20.4453125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{FF07A146-A6C5-4B85-A9F3-8CAFE2F2F6CB\}]"
+          TopLeft="104.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

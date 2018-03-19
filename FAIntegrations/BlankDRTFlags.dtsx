@@ -1,0 +1,1298 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/8/2018 2:58:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CE-SQL2016"
+  DTS:CreatorName="CE\maria.lindquist"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{37EFC54B-FDBF-47E3-9A66-FF9D51944725}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="BlankDRTFlags"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{E38ABBF8-247E-4FA3-ACAC-69AAE007FB1D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{47C8D4BF-C16B-4E2F-8AB1-7162A9A1B67C}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F5294B72-13C7-41B5-A2F1-962C1A95B2AD}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.11.10.72\UWEXDV;User ID=uwex_rem_prod_rpt;Initial Catalog=uwex_rem_prod_rpt;Provider=SQLNCLI11;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAOlMYTNAEQUKr6VDI+5l2CgAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAADxtxZIMym0AkT/8WxfR67UAAAAAASAAACgAAAAEAAAACGr6hP2niIZn/i/DAYMjxQoAAAA63d1Sp9yV2pHxRgvgoGMYwKjaFGPdM/QXtok6NawO6yp8vvrPE9xaBQAAACItv6xM8NrpfbNNnBD2lvzt7UVbQ</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{99BA4F89-0A58-477E-85D0-255915E9C3C5}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="F:\prod\UWMIL\ISIR\DRT Flags 2019\UWX_ISIRS19_ERR.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ORIG_SSN"
+              DTS:DTSID="{667B4EAF-D30E-457A-BAA4-24DC54F11F75}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_TAXRET"
+              DTS:DTSID="{7718ECD5-9A10-47E2-9531-A98D8FC3872C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_EXEMPT"
+              DTS:DTSID="{ED4C8C96-8BFD-481C-9B4D-A1F32D98C46A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_EDCRDT"
+              DTS:DTSID="{0393BD3C-A480-4014-92E2-2B17B32C73A6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_IRAPAY"
+              DTS:DTSID="{3FA251AA-44E2-422D-8A9E-A45E744B55C9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_INTRST"
+              DTS:DTSID="{A0735BAE-977D-4AAA-B373-BFB0E7C28198}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_IRADIS"
+              DTS:DTSID="{C9FAD550-2A42-4042-AA27-AA1FC489A9AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_UNTAX"
+              DTS:DTSID="{E4D8F97C-49E5-49B9-B1F5-4AC01B019AD5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_STU_IRS_STATUS"
+              DTS:DTSID="{FFB672D5-D8BA-4B4A-BE59-33D4D818F4A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_TAXRET"
+              DTS:DTSID="{979A3120-F646-4ADE-B79E-B51BB44358A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_EXEMPT"
+              DTS:DTSID="{E455FDC9-35EE-447B-90E4-3085F7BD6411}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_EDCRDT"
+              DTS:DTSID="{352D0B3A-52DA-4989-BB06-AED7C8A4680D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_IRAPAY"
+              DTS:DTSID="{06C28DE0-4ADC-45A5-B09B-86CBE8CD28B2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_INTRST"
+              DTS:DTSID="{27E6F869-15A5-4F0D-8DAA-552D793EEC55}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_IRADIS"
+              DTS:DTSID="{9755BB74-1749-4FC6-BF65-761F2BEAB549}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_UNTAX"
+              DTS:DTSID="{2CDE2A16-A6F7-4ED8-8158-DEF10E253F91}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SFA_PAR_IRS_STATUS"
+              DTS:DTSID="{3FD0D263-08F9-4DA1-B506-146BDB067B35}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Column 17"
+              DTS:DTSID="{CAA0FE13-BE62-4EB9-B0A0-A3D20415EEC9}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{1AB252C1-5071-4E31-8D36-2408D1B6E905}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - UWX_ISIRS19_ERR"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[UWX_ISIRS19_ERR]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[ORIG_SSN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ORIG_SSN"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[ORIG_SSN]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[ORIG_SSN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_TAXRET]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_TAXRET"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_TAXRET]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_TAXRET]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_EXEMPT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_EXEMPT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_EXEMPT]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_EXEMPT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_EDCRDT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_EDCRDT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_EDCRDT]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_EDCRDT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_IRAPAY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_IRAPAY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_IRAPAY]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_IRAPAY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_INTRST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_INTRST"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_INTRST]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_INTRST]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_IRADIS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_IRADIS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_IRADIS]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_IRADIS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_UNTAX]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_UNTAX"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_UNTAX]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_UNTAX]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_STU_IRS_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_STU_IRS_STATUS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_STATUS]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_STATUS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_TAXRET]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_TAXRET"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_TAXRET]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_TAXRET]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_EXEMPT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_EXEMPT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_EXEMPT]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_EXEMPT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_EDCRDT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_EDCRDT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_EDCRDT]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_EDCRDT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_IRAPAY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_IRAPAY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_IRAPAY]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_IRAPAY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_INTRST]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_INTRST"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_INTRST]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_INTRST]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_IRADIS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_IRADIS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_IRADIS]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_IRADIS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_UNTAX]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_UNTAX"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_UNTAX]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_UNTAX]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[SFA_PAR_IRS_STATUS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SFA_PAR_IRS_STATUS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_STATUS]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_STATUS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].Columns[Column 17]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Column 17"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[Column 17]"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[Column 17]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[ORIG_SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ORIG_SSN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_TAXRET]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_TAXRET" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_EXEMPT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_EXEMPT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_EDCRDT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_EDCRDT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_IRAPAY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_IRAPAY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_INTRST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_INTRST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_IRADIS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_IRADIS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_UNTAX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_UNTAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_STU_IRS_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_TAXRET]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_TAXRET" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_EXEMPT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_EXEMPT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_EDCRDT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_EDCRDT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_IRAPAY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_IRAPAY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_INTRST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_INTRST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_IRADIS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_IRADIS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_UNTAX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_UNTAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[SFA_PAR_IRS_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input].ExternalColumns[Column 17]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 17" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Source - UWX_ISIRS19_ERR_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[ORIG_SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[ORIG_SSN]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[ORIG_SSN]"
+                      name="ORIG_SSN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_TAXRET]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_TAXRET]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_TAXRET]"
+                      name="SFA_STU_IRS_TAXRET"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_EXEMPT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_EXEMPT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_EXEMPT]"
+                      name="SFA_STU_IRS_EXEMPT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_EDCRDT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_EDCRDT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_EDCRDT]"
+                      name="SFA_STU_IRS_EDCRDT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_IRAPAY]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_IRAPAY]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_IRAPAY]"
+                      name="SFA_STU_IRS_IRAPAY"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_INTRST]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_INTRST]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_INTRST]"
+                      name="SFA_STU_IRS_INTRST"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_IRADIS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_IRADIS]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_IRADIS]"
+                      name="SFA_STU_IRS_IRADIS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_UNTAX]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_UNTAX]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_UNTAX]"
+                      name="SFA_STU_IRS_UNTAX"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_STATUS]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_STU_IRS_STATUS]"
+                      name="SFA_STU_IRS_STATUS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_TAXRET]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_TAXRET]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_TAXRET]"
+                      name="SFA_PAR_IRS_TAXRET"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_EXEMPT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_EXEMPT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_EXEMPT]"
+                      name="SFA_PAR_IRS_EXEMPT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_EDCRDT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_EDCRDT]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_EDCRDT]"
+                      name="SFA_PAR_IRS_EDCRDT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_IRAPAY]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_IRAPAY]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_IRAPAY]"
+                      name="SFA_PAR_IRS_IRAPAY"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_INTRST]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_INTRST]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_INTRST]"
+                      name="SFA_PAR_IRS_INTRST"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_IRADIS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_IRADIS]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_IRADIS]"
+                      name="SFA_PAR_IRS_IRADIS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_UNTAX]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_UNTAX]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_UNTAX]"
+                      name="SFA_PAR_IRS_UNTAX"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_STATUS]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[SFA_PAR_IRS_STATUS]"
+                      name="SFA_PAR_IRS_STATUS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[Column 17]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[Column 17]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].Columns[Column 17]"
+                      name="Column 17"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[ORIG_SSN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ORIG_SSN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_TAXRET]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_TAXRET" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_EXEMPT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_EXEMPT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_EDCRDT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_EDCRDT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_IRAPAY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_IRAPAY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_INTRST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_INTRST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_IRADIS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_IRADIS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_UNTAX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_UNTAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_STU_IRS_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_STU_IRS_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_TAXRET]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_TAXRET" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_EXEMPT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_EXEMPT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_EDCRDT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_EDCRDT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_IRAPAY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_IRAPAY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_INTRST]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_INTRST" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_IRADIS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_IRADIS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_UNTAX]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_UNTAX" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[SFA_PAR_IRS_STATUS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SFA_PAR_IRS_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output].ExternalColumns[Column 17]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Column 17" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR.Inputs[Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{E3903A5F-9BCF-4118-BAF1-5185E829C57F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F5294B72-13C7-41B5-A2F1-962C1A95B2AD}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[UWX_ISIRS19_ERR] (&#xA;[ORIG_SSN] varchar(50),&#xA;[SFA_STU_IRS_TAXRET] varchar(50),&#xA;[SFA_STU_IRS_EXEMPT] varchar(50),&#xA;[SFA_STU_IRS_EDCRDT] varchar(50),&#xA;[SFA_STU_IRS_IRAPAY] varchar(50),&#xA;[SFA_STU_IRS_INTRST] varchar(50),&#xA;[SFA_STU_IRS_IRADIS] varchar(50),&#xA;[SFA_STU_IRS_UNTAX] varchar(50),&#xA;[SFA_STU_IRS_STATUS] varchar(50),&#xA;[SFA_PAR_IRS_TAXRET] varchar(50),&#xA;[SFA_PAR_IRS_EXEMPT] varchar(50),&#xA;[SFA_PAR_IRS_EDCRDT] varchar(50),&#xA;[SFA_PAR_IRS_IRAPAY] varchar(50),&#xA;[SFA_PAR_IRS_INTRST] varchar(50),&#xA;[SFA_PAR_IRS_IRADIS] varchar(50),&#xA;[SFA_PAR_IRS_UNTAX] varchar(50),&#xA;[SFA_PAR_IRS_STATUS] varchar(50),&#xA;[Column 17] varchar(50)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{AEB5A32F-DDAF-4DE8-91DF-FF46C34F60C4\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{AEB5A32F-DDAF-4DE8-91DF-FF46C34F60C4}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{AEB5A32F-DDAF-4DE8-91DF-FF46C34F60C4}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="20.5,107.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{AEB5A32F-DDAF-4DE8-91DF-FF46C34F60C4\}]"
+          TopLeft="100.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package\Data Flow Task 1\Source - UWX_ISIRS19_ERR_csv"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="Package\Data Flow Task 1\Destination - UWX_ISIRS19_ERR"
+          TopLeft="NaN,NaN" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

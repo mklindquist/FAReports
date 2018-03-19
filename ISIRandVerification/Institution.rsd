@@ -3,11 +3,20 @@
   <DataSet Name="DataSet1">
     <Query>
       <DataSourceReference>RegentProd</DataSourceReference>
-      <CommandText>select name from [dbo].[dataExtract_Institution_Config_View]</CommandText>
+      <CommandText>SELECT DISTINCT name, displayName, institutionExternalId
+FROM dbo.dataExtract_Institution_Config_View</CommandText>
     </Query>
     <Fields>
       <Field Name="name">
         <DataField>name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="displayName">
+        <DataField>displayName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="institutionExternalId">
+        <DataField>institutionExternalId</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
     </Fields>

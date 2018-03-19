@@ -18,21 +18,30 @@
           <QueryParameter Name="@CrseStart">
             <Value>=Parameters!CrseStart.Value</Value>
           </QueryParameter>
-          <QueryParameter Name="@awardyear">
+          <QueryParameter Name="@awardYear">
             <Value>=Parameters!awardYear.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT DISTINCT a.externalId1, a2.LastName, a2.FirstName, MIN(a.startDate) AS FirstCourseStartDt
-FROM            dataExtract_CourseData_View AS a INNER JOIN
-                         dataExtract_Student_View AS a2 ON a.externalId1 = a2.externalId1
-WHERE        (a.externalTransferYN = 0) AND (a.internalTransferYN = 0)  AND a.startDate &gt;= @CrseStart AND EXISTS
-                             (SELECT        'x' AS Expr1
-                               FROM            dataExtract_ISIR_View AS x
-                               WHERE        (externalId1 = a.externalId1
-AND federalAwardYearName= @awardyear)) AND EXISTS
-                             (SELECT        'z' AS Expr1
-                               FROM            dataExtract_DocumentRequirement_View AS z
-                               WHERE        (externalId1 = a.externalId1) AND (documentName LIKE 'Approved%') AND (status = 'NEEDED'))
+        <CommandText>-- This report looks at ISIRs received by Award Year where APS is required for a select Class Start Date
+-- Maria Lindquist
+SELECT DISTINCT a.externalId1
+, a2.LastName
+, a2.FirstName
+, MIN(a.startDate) AS FirstCourseStartDt
+FROM   dataExtract_CourseData_View AS a INNER JOIN
+       dataExtract_Student_View AS a2 ON a.externalId1 = a2.externalId1
+WHERE a.externalTransferYN = 0 
+AND a.internalTransferYN = 0  
+AND a.startDate &gt;= @CrseStart
+AND EXISTS     (SELECT   'x' AS Expr1 
+                FROM dataExtract_ISIR_View AS x
+                WHERE externalId1 = a.externalId1
+                AND federalAwardYearName= @awardYear)
+ AND EXISTS   (SELECT 'z' AS Expr1
+                FROM  dataExtract_DocumentRequirement_View AS z
+                WHERE externalId1 = a.externalId1
+                AND documentName LIKE 'Approved%' 
+                AND status = 'NEEDED')
 GROUP BY a.externalId1, a2.LastName, a2.FirstName
 ORDER BY FirstCourseStartDt, a.externalId1</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
@@ -53,6 +62,17 @@ ORDER BY FirstCourseStartDt, a.externalId1</CommandText>
         <Field Name="FirstCourseStartDt">
           <DataField>FirstCourseStartDt</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="FAY">
+      <SharedDataSet>
+        <SharedDataSetReference>FederalAwardYear</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="federalAwardYearName">
+          <DataField>federalAwardYearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -552,24 +572,11 @@ ORDER BY FirstCourseStartDt, a.externalId1</CommandText>
       <DataType>String</DataType>
       <Prompt>Award Year</Prompt>
       <ValidValues>
-        <ParameterValues>
-          <ParameterValue>
-            <Value>2015-2016</Value>
-            <Label>2015-2016</Label>
-          </ParameterValue>
-          <ParameterValue>
-            <Value>2016-2017</Value>
-            <Label>2016-2017</Label>
-          </ParameterValue>
-          <ParameterValue>
-            <Value>2017-2018</Value>
-            <Label>2017-2018</Label>
-          </ParameterValue>
-          <ParameterValue>
-            <Value>2018-2019</Value>
-            <Label>2018-2019</Label>
-          </ParameterValue>
-        </ParameterValues>
+        <DataSetReference>
+          <DataSetName>FAY</DataSetName>
+          <ValueField>federalAwardYearName</ValueField>
+          <LabelField>federalAwardYearName</LabelField>
+        </DataSetReference>
       </ValidValues>
     </ReportParameter>
   </ReportParameters>

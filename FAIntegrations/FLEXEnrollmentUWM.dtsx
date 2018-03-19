@@ -1,0 +1,1090 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/1/2018 9:27:59 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CE-SQL2016"
+  DTS:CreatorName="CE\maria.lindquist"
+  DTS:Description="DTS Wizard-generated package"
+  DTS:DTSID="{81B70F95-D7A4-4CB9-BC5B-35A611E0E1AB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="FLEXEnrollmentUWM"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{963B5C4C-9B6E-4565-B286-B62C0E190DB6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3976454B-BFCE-4D64-8DD4-C0A53B4FFE6C}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.11.10.72\UWEXDV;User ID=uwex_rem_prod_rpt;Initial Catalog=uwex_rem_prod_rpt;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{11CEC9B5-FDE4-4311-B49E-FBA0AB5E5859}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\ce-fiad\DataFeeds\prod\UWMIL\EnrlData\FLEXEnrollmentUWM.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Term"
+              DTS:DTSID="{06052B9E-C66A-44AF-B15C-CFF34323E15D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Institution"
+              DTS:DTSID="{363991B8-B132-49E5-AAD7-481DFDD926D1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PrimProg"
+              DTS:DTSID="{F9510EE5-9A92-405E-BC23-C9F90F2B4E86}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="LastName"
+              DTS:DTSID="{03A374CE-D017-413D-9B94-C3C4401293FD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FirstName"
+              DTS:DTSID="{FA5F3404-1305-458C-BE7A-7106DF6FCC66}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Emplid"
+              DTS:DTSID="{AD42F61A-B3A2-4681-B381-A669DAA65BB1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Subject"
+              DTS:DTSID="{AD2DEE4A-2CB7-4665-BD54-ED90EE1DC55E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Catalog"
+              DTS:DTSID="{8FB95E21-C21B-4C5B-922D-B09191BA35C7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Section"
+              DTS:DTSID="{16E050AF-F2F8-4B94-BE04-9EED296F0A3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UnitTaken"
+              DTS:DTSID="{50EF63D9-D967-4698-9F28-43B9A7ACA3AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddDt"
+              DTS:DTSID="{ABE59735-7FFC-4C2B-8AD2-A865BDBD9BBC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DropDt"
+              DTS:DTSID="{E2559B68-97F6-410E-B9E1-8E4858777994}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FinalGrade"
+              DTS:DTSID="{1A33B42F-F9AF-45B0-8B5B-48D531C0D326}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Gradeln"
+              DTS:DTSID="{F4B61C11-8227-4B43-8992-DC3B6695D480}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{45266E4C-A8DC-4A5E-ABA5-B616A86D8F6E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - FLEXEnrollmentUWM"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FLEXEnrollmentUWM]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[Term]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Term"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Term]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Term]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[Institution]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Institution"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Institution]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Institution]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[PrimProg]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PrimProg"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[PrimProg]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[PrimProg]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[LastName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[LastName]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[FirstName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[Emplid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Emplid"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Emplid]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Emplid]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[Subject]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Subject"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Subject]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Subject]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[Catalog]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Catalog"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Catalog]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Catalog]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[Section]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Section"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Section]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Section]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[UnitTaken]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="UnitTaken"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[UnitTaken]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[UnitTaken]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[AddDt]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AddDt"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[AddDt]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[AddDt]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[DropDt]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DropDt"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[DropDt]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[DropDt]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[FinalGrade]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FinalGrade"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[FinalGrade]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[FinalGrade]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].Columns[Gradeln]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Gradeln"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Gradeln]"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Gradeln]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Institution]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Institution" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[PrimProg]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PrimProg" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Emplid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Emplid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Subject]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Subject" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Catalog]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Catalog" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Section]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Section" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[UnitTaken]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UnitTaken" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[AddDt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddDt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[DropDt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DropDt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[FinalGrade]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FinalGrade" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input].ExternalColumns[Gradeln]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gradeln" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Source - FLEXEnrollmentUWM_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Term]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Term]"
+                      name="Term"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Institution]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Institution]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Institution]"
+                      name="Institution"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[PrimProg]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[PrimProg]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[PrimProg]"
+                      name="PrimProg"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Emplid]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Emplid]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Emplid]"
+                      name="Emplid"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Subject]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Subject]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Subject]"
+                      name="Subject"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Catalog]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Catalog]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Catalog]"
+                      name="Catalog"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Section]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Section]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Section]"
+                      name="Section"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[UnitTaken]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[UnitTaken]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[UnitTaken]"
+                      name="UnitTaken"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[AddDt]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[AddDt]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[AddDt]"
+                      name="AddDt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[DropDt]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[DropDt]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[DropDt]"
+                      name="DropDt"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[FinalGrade]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[FinalGrade]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[FinalGrade]"
+                      name="FinalGrade"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Gradeln]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Gradeln]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].Columns[Gradeln]"
+                      name="Gradeln"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Term]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Term" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Institution]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Institution" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[PrimProg]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PrimProg" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[LastName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[FirstName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Emplid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Emplid" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Subject]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Subject" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Catalog]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Catalog" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Section]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Section" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[UnitTaken]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="UnitTaken" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[AddDt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddDt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[DropDt]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DropDt" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[FinalGrade]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FinalGrade" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output].ExternalColumns[Gradeln]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Gradeln" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task 1\Destination - FLEXEnrollmentUWM.Inputs[Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task 1\Source - FLEXEnrollmentUWM_csv.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Drop table(s) SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{329C496B-4386-4B58-94F1-37D1CBD2463C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Drop table(s) SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3976454B-BFCE-4D64-8DD4-C0A53B4FFE6C}"
+          SQLTask:SqlStatementSource="drop table [dbo].[FLEXEnrollmentUWM]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{9CF624CA-98D0-4C09-9565-0010BF26EAE2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3976454B-BFCE-4D64-8DD4-C0A53B4FFE6C}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[FLEXEnrollmentUWM] (&#xA;[Term] varchar(50),&#xA;[Institution] varchar(50),&#xA;[PrimProg] varchar(50),&#xA;[LastName] varchar(50),&#xA;[FirstName] varchar(50),&#xA;[Emplid] varchar(50),&#xA;[Subject] varchar(50),&#xA;[Catalog] varchar(50),&#xA;[Section] varchar(50),&#xA;[UnitTaken] varchar(50),&#xA;[AddDt] varchar(50),&#xA;[DropDt] varchar(50),&#xA;[FinalGrade] varchar(50),&#xA;[Gradeln] varchar(50)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{2AF2614A-9FF3-449B-8426-7E9DFF925E79\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{2AF2614A-9FF3-449B-8426-7E9DFF925E79}"
+      DTS:From="Package\Drop table(s) SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{2AF2614A-9FF3-449B-8426-7E9DFF925E79}"
+      DTS:To="Package\Preparation SQL Task 1"
+      DTS:Value="2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{46A361FF-7935-4CF1-95EE-CCEFA53F00D0\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{46A361FF-7935-4CF1-95EE-CCEFA53F00D0}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{46A361FF-7935-4CF1-95EE-CCEFA53F00D0}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="24.5,209.5" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\Drop table(s) SQL Task 1"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="9.50000000000003,107.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{2AF2614A-9FF3-449B-8426-7E9DFF925E79\}]"
+          TopLeft="104.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-25.304453125,20.4453125,50.60890625,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{46A361FF-7935-4CF1-95EE-CCEFA53F00D0\}]"
+          TopLeft="104.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -26,10 +26,23 @@
             <Value>=Parameters!Institution.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        a.createdOn, a.externalId1 AS RegentID, a.externalId2 AS EMPLID, a.externalId3 AS FlexID, b.LastName, b.FirstName, a.verificationStatusName,                         a.federalAwardYearName, a.transactionNumber, a.transactionProcessedDate
-FROM            dataExtract_ISIR_View AS a INNER JOIN
-                         dataExtract_Student_View AS b ON a.externalId1 = b.externalId1
-WHERE        (a.createdOn BETWEEN @DateFrom and @ToDate and a.locationExternalID = @Institution)</CommandText>
+        <CommandText>-- This SQL results in Received ISIRS for a select Institution and select dates
+-- Maria Lindquist
+SELECT a.createdOn
+, a.externalId1 AS RegentID
+, a.externalId2 AS EMPLID
+, a.externalId3 AS FlexID
+, b.LastName
+, b.FirstName
+, a.verificationStatusName
+,  a.federalAwardYearName
+, a.transactionNumber
+, a.transactionProcessedDate
+FROM   dataExtract_ISIR_View AS a
+INNER JOIN dataExtract_Student_View AS b 
+ON a.externalId1 = b.externalId1
+WHERE a.createdOn BETWEEN @DateFrom AND @ToDate
+AND a.locationExternalID = @Institution</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -71,6 +84,25 @@ WHERE        (a.createdOn BETWEEN @DateFrom and @ToDate and a.locationExternalID
         </Field>
         <Field Name="transactionProcessedDate">
           <DataField>transactionProcessedDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Institution">
+      <SharedDataSet>
+        <SharedDataSetReference>Institution</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="displayName">
+          <DataField>displayName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="institutionExternalId">
+          <DataField>institutionExternalId</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -1485,11 +1517,11 @@ WHERE        (a.createdOn BETWEEN @DateFrom and @ToDate and a.locationExternalID
       </ValidValues>
     </ReportParameter>
     <ReportParameter Name="DateFrom">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>Date From</Prompt>
     </ReportParameter>
     <ReportParameter Name="ToDate">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>To Date</Prompt>
     </ReportParameter>
   </ReportParameters>

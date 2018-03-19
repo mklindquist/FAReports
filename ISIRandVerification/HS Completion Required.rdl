@@ -14,9 +14,10 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>RegentProd</DataSourceName>
-        <CommandText>-- This SQL selects students who have the HS Completion on the ISIR equal to blank and who don't have the High School Completion Requirement on their account
-select a.createdOn, a.externalId1, a.locationExternalId, a.activeISIR, a.yearIndicator, a.transactionNumber, a.transactionProcessedDate from dbo.dataExtract_ISIR_View a
+        <CommandText>-- This SQL selects students who have the HS Completion on an active ISIR equal to blank and who don't have the High School Completion Requirement on their account
+select a.createdOn, a.externalId1, a.studentsFirstName, a.studentsLastName, a.middleInitial, a.locationExternalId, a.activeISIR, a.yearIndicator, a.transactionNumber, a.transactionProcessedDate from dbo.dataExtract_ISIR_View a
 WHERE HSDiplomaOrEquivalent = 4
+and a.activeISIR = 1
 and not exists(select 'z' from dataExtract_DocumentRequirement_View z
 			where z.externalId1 = a.externalId1
 			and z.documentName like 'High School Completion%'
@@ -32,13 +33,25 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
           <DataField>externalId1</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="studentsFirstName">
+          <DataField>studentsFirstName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="locationExternalId">
           <DataField>locationExternalId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="studentsLastName">
+          <DataField>studentsLastName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="activeISIR">
           <DataField>activeISIR</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="middleInitial">
+          <DataField>middleInitial</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="yearIndicator">
           <DataField>yearIndicator</DataField>
@@ -98,7 +111,10 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                   <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.60417in</Width>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1in</Width>
@@ -201,14 +217,14 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="textbox4">
+                        <Textbox Name="Textbox9">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Location</Value>
+                                  <Value>First Name</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -220,7 +236,7 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>textbox4</rd:DefaultName>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -230,7 +246,6 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                               <Style>Solid</Style>
                             </BottomBorder>
                             <BackgroundColor>SteelBlue</BackgroundColor>
-                            <FontFamily />
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -241,14 +256,14 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="textbox5">
+                        <Textbox Name="Textbox11">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>active ISIR</Value>
+                                  <Value>Last Name</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -260,7 +275,7 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>textbox5</rd:DefaultName>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -270,7 +285,45 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                               <Style>Solid</Style>
                             </BottomBorder>
                             <BackgroundColor>SteelBlue</BackgroundColor>
-                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>MI</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox13</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
+                            <BackgroundColor>SteelBlue</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -442,7 +495,6 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -484,14 +536,14 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="locationExternalId">
+                        <Textbox Name="studentsFirstName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!locationExternalId.Value</Value>
+                                  <Value>=Fields!studentsFirstName.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -501,7 +553,7 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>locationExternalId</rd:DefaultName>
+                          <rd:DefaultName>studentsFirstName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -510,7 +562,6 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
-                            <FontFamily />
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -521,14 +572,14 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="activeISIR">
+                        <Textbox Name="studentsLastName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!activeISIR.Value</Value>
+                                  <Value>=Fields!studentsLastName.Value</Value>
                                   <Style>
                                     <FontFamily />
                                     <Color>#333333</Color>
@@ -538,7 +589,7 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>activeISIR</rd:DefaultName>
+                          <rd:DefaultName>studentsLastName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -547,7 +598,42 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                             <BottomBorder>
                               <Style>Solid</Style>
                             </BottomBorder>
-                            <FontFamily />
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="middleInitial">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!middleInitial.Value</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <Color>#333333</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>middleInitial</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -680,6 +766,7 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -705,7 +792,7 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
             <DataSetName>DataSet1</DataSetName>
             <Top>0.43in</Top>
             <Height>0.43in</Height>
-            <Width>8.8125in</Width>
+            <Width>9.20833in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <FontFamily>Tahoma</FontFamily>
@@ -715,7 +802,7 @@ and not exists(select 'z' from dataExtract_DocumentRequirement_View z
         <Height>0.86in</Height>
         <Style />
       </Body>
-      <Width>8.8125in</Width>
+      <Width>11.8125in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>

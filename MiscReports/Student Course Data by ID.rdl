@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
-  <Description>This reports shows students who have a graduation date.</Description>
+  <Description>This reports shows course data by Student ID</Description>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -19,7 +19,9 @@
             <Value>=Parameters!ExternalId1.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT cv.externalId1
+        <CommandText>-- This SQL generates a report of student courses by student ID
+-- Maria Lindquist
+SELECT cv.externalId1
 , sv.lastName
 , sv.firstName
 , cv.courseExternalId

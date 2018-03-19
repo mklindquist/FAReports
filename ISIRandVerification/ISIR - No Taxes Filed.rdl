@@ -88,6 +88,17 @@ and a.federalAwardYearName = @federalAwardYear
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="FAY">
+      <SharedDataSet>
+        <SharedDataSetReference>FederalAwardYear</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="federalAwardYearName">
+          <DataField>federalAwardYearName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -1152,24 +1163,11 @@ and a.federalAwardYearName = @federalAwardYear
       <DataType>String</DataType>
       <Prompt>federalAwardYear</Prompt>
       <ValidValues>
-        <ParameterValues>
-          <ParameterValue>
-            <Value>2015-2016</Value>
-            <Label>2015-2016</Label>
-          </ParameterValue>
-          <ParameterValue>
-            <Value>2016-2017</Value>
-            <Label>2016-2017</Label>
-          </ParameterValue>
-          <ParameterValue>
-            <Value>2017-2018</Value>
-            <Label>2017-2018</Label>
-          </ParameterValue>
-          <ParameterValue>
-            <Value>2018-2019</Value>
-            <Label>2018-2019</Label>
-          </ParameterValue>
-        </ParameterValues>
+        <DataSetReference>
+          <DataSetName>FAY</DataSetName>
+          <ValueField>federalAwardYearName</ValueField>
+          <LabelField>federalAwardYearName</LabelField>
+        </DataSetReference>
       </ValidValues>
     </ReportParameter>
   </ReportParameters>

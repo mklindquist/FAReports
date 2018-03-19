@@ -61,6 +61,8 @@
     <Report Include="Anticipated Aid With AcctBalances_GT0_UWC.rdl" />
     <Report Include="Anticipated Aid With AcctBalances_GT0_UWM.rdl" />
     <Report Include="Anticipated Aid with Student Breaks.rdl" />
+    <Report Include="Award Change History ALL.rdl" />
+    <Report Include="Award Change History by ID.rdl" />
     <Report Include="Award Letter.rdl" />
     <Report Include="COD Award Disb ErrorCode 039.rdl" />
     <Report Include="COD Award Disb ErrorCode Selection.rdl" />
@@ -70,6 +72,7 @@
     <Report Include="Students Accepted Unsub Before Sub.rdl" />
     <Report Include="Students Awarded by Date Range.rdl" />
     <Report Include="StudentsAwardedPell w PriorBachDegree.rdl" />
+    <Report Include="TEMPLATE.rdl" />
     <Report Include="WI Students Awarded Pell.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
