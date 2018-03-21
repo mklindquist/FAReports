@@ -161,24 +161,12 @@ where av.deleted = 0</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Award Change History Report - </Value>
+                    <Value>Award Change History Report</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>20pt</FontSize>
                       <FontWeight>Bold</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                      <Color>SteelBlue</Color>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
-                    <Style>
-                      <FontStyle>Normal</FontStyle>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>20pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <Format>d</Format>
                       <TextDecoration>None</TextDecoration>
                       <Color>SteelBlue</Color>
                     </Style>
