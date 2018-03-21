@@ -154,7 +154,7 @@ AND cv.deleted = 0</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Student Courses for ExternalID: </Value>
+                    <Value>Student Course Data for ExternalID: </Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>24pt</FontSize>
