@@ -200,7 +200,7 @@ group by c.externalId1
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Anticipated Aid and Balance Due &gt; 0 for </Value>
+                    <Value>Anticipated Aid AND Balance Due &gt; 0 for </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
