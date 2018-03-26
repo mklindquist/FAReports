@@ -66,8 +66,7 @@ c.externalId1
 , b.[estRecordDisbursement_PreviousPaidAmount]
 , e.fund_externalId
 , d.program_programName
-order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]
-</CommandText>
+order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]</CommandText>
       </Query>
       <Fields>
         <Field Name="ExternalID1">
@@ -145,7 +144,7 @@ order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Fields!ExternalID1.Value</Value>
+                    <Value>=Parameters!ExternalID.Value</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -154,25 +153,7 @@ order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value> -</Value>
-                    <Style>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>18pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <Color>SteelBlue</Color>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Fields!LastName.Value</Value>
-                    <Style>
-                      <FontFamily>Tahoma</FontFamily>
-                      <FontSize>18pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <Color>SteelBlue</Color>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>, </Value>
+                    <Value> - </Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>18pt</FontSize>
@@ -182,6 +163,24 @@ order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]
                   </TextRun>
                   <TextRun>
                     <Value>=Fields!FirstName.Value</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>SteelBlue</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>18pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>SteelBlue</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=Fields!LastName.Value</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>18pt</FontSize>

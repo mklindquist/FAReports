@@ -3,7 +3,7 @@
   <DataSet Name="DataSet1">
     <Query>
       <DataSourceReference>RegentProd</DataSourceReference>
-      <CommandText>select externalID1, FirstName, LastName
+      <CommandText>select externalID1, LastName +', '+ FirstName as StudentName
 from [dbo].[dataExtract_Student_View]</CommandText>
     </Query>
     <Fields>
@@ -11,12 +11,8 @@ from [dbo].[dataExtract_Student_View]</CommandText>
         <DataField>externalID1</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
-      <Field Name="FirstName">
-        <DataField>FirstName</DataField>
-        <rd:TypeName>System.String</rd:TypeName>
-      </Field>
-      <Field Name="LastName">
-        <DataField>LastName</DataField>
+      <Field Name="StudentName">
+        <DataField>StudentName</DataField>
         <rd:TypeName>System.String</rd:TypeName>
       </Field>
     </Fields>

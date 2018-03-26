@@ -16,8 +16,8 @@
       <Query>
         <DataSourceName>RegentProd</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name="@location">
-            <Value>=Parameters!location.Value</Value>
+          <QueryParameter Name="@Institution">
+            <Value>=Parameters!Institution.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <CommandText>select distinct 
@@ -50,7 +50,7 @@ and a.ioProcess_ioProcessStatusId = 'COMPLETE'
 and a.ioProcess_estTypeCode = 'Actual'
 and b.[estRecordStudent_ExternalId1] = c.externalID1
 and c.externalID1 = d.externalID1
-and c.locationExternalID =  @location
+and c.locationExternalID =  @Institution
 group by
 c.externalId1
 ,c.externalId2
@@ -138,6 +138,25 @@ order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]<
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="DataSet2">
+      <SharedDataSet>
+        <SharedDataSetReference>Institution</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="displayName">
+          <DataField>displayName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="institutionExternalId">
+          <DataField>institutionExternalId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -159,7 +178,7 @@ order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]<
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>=Parameters!location.Value</Value>
+                    <Value>=Parameters!Institution.Value</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>24pt</FontSize>
@@ -1499,32 +1518,27 @@ order by b.estRecordStudent_LastName, b.[estRecordDisbursement_TransactionDate]<
     </ReportSection>
   </ReportSections>
   <ReportParameters>
-    <ReportParameter Name="location">
+    <ReportParameter Name="Institution">
       <DataType>String</DataType>
-      <Prompt>location</Prompt>
+      <Prompt>Institution</Prompt>
       <ValidValues>
-        <ParameterValues>
-          <ParameterValue>
-            <Value>UWCOL</Value>
-            <Label>UW Colleges</Label>
-          </ParameterValue>
-          <ParameterValue>
-            <Value>UWMIL</Value>
-            <Label>UW Milwaukee</Label>
-          </ParameterValue>
-        </ParameterValues>
+        <DataSetReference>
+          <DataSetName>DataSet2</DataSetName>
+          <ValueField>institutionExternalId</ValueField>
+          <LabelField>displayName</LabelField>
+        </DataSetReference>
       </ValidValues>
     </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>2</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
+      <NumberOfRows>1</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>location</ParameterName>
+          <ParameterName>Institution</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

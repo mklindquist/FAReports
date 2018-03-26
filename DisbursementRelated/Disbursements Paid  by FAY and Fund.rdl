@@ -147,6 +147,14 @@ and  TransactionDate between @FromDate and @ToDate</CommandText>
           <DataField>name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="displayName">
+          <DataField>displayName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="institutionExternalId">
+          <DataField>institutionExternalId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
     </DataSet>
   </DataSets>
@@ -2323,17 +2331,17 @@ and  TransactionDate between @FromDate and @ToDate</CommandText>
       <ValidValues>
         <DataSetReference>
           <DataSetName>DataSet2</DataSetName>
-          <ValueField>name</ValueField>
+          <ValueField>institutionExternalId</ValueField>
           <LabelField>name</LabelField>
         </DataSetReference>
       </ValidValues>
     </ReportParameter>
     <ReportParameter Name="FromDate">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>From Date</Prompt>
     </ReportParameter>
     <ReportParameter Name="ToDate">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>To Date</Prompt>
     </ReportParameter>
   </ReportParameters>

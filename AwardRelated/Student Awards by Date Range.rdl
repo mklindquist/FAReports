@@ -76,6 +76,25 @@ order by c.lastName, c.firstName;</CommandText>
         </Field>
       </Fields>
     </DataSet>
+    <DataSet Name="DataSet2">
+      <SharedDataSet>
+        <SharedDataSetReference>Institution</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="name">
+          <DataField>name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="displayName">
+          <DataField>displayName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="institutionExternalId">
+          <DataField>institutionExternalId</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
   </DataSets>
   <ReportSections>
     <ReportSection>
@@ -1179,13 +1198,20 @@ order by c.lastName, c.firstName;</CommandText>
     <ReportParameter Name="Institution">
       <DataType>String</DataType>
       <Prompt>Institution</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>DataSet2</DataSetName>
+          <ValueField>institutionExternalId</ValueField>
+          <LabelField>name</LabelField>
+        </DataSetReference>
+      </ValidValues>
     </ReportParameter>
     <ReportParameter Name="Date1">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>Date1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Date2">
-      <DataType>String</DataType>
+      <DataType>DateTime</DataType>
       <Prompt>Date2</Prompt>
     </ReportParameter>
   </ReportParameters>
