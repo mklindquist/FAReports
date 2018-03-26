@@ -364,7 +364,7 @@ group by c.externalId1
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>EMPLID</Value>
+                                  <Value>SIS Emplid</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -433,6 +433,7 @@ group by c.externalId1
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
