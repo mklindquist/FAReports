@@ -2,6 +2,7 @@
 <Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
   <Description>This reports shows students who have a graduation date.</Description>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <Author>Maria K Lindquist</Author>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="RegentProd">
@@ -69,7 +70,7 @@ and academicPlanProgram_graduationDate is  null);</CommandText>
             </Paragraphs>
             <rd:DefaultName>textbox1</rd:DefaultName>
             <Height>0.43in</Height>
-            <Width>6.51042in</Width>
+            <Width>6.95834in</Width>
             <Style>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -459,7 +460,7 @@ and academicPlanProgram_graduationDate is  null);</CommandText>
         <Height>0.86in</Height>
         <Style />
       </Body>
-      <Width>6.51042in</Width>
+      <Width>7.96875in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
