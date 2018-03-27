@@ -49,6 +49,7 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <DataSet Include="FederalAwardYear.rsd" />
     <DataSet Include="Institution.rsd" />
     <DataSet Include="StudentInfo.rsd" />
   </ItemGroup>
@@ -69,6 +70,8 @@
     <Report Include="Student Cost of Attendance by FAY.rdl" />
     <Report Include="Student Course Data by ID.rdl" />
     <Report Include="Student Debt Letter Data.rdl" />
+    <Report Include="Students Admitted to Health Sciences.rdl" />
+    <Report Include="TEMPLATE.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
 </Project>

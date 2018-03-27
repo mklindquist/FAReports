@@ -23,7 +23,9 @@
             <Value>=Parameters!RegentID.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>select  cv.externalID1
+        <CommandText>-- This SQL shows a select student's Cost of Attendance by Financial Aid Year
+-- Developed by Maria K Lindquist
+SELECT cv.externalID1
 , sv.FirstName
 , sv.LastName
 , cv.locationExternalID
@@ -31,14 +33,16 @@
 , cv.academicYear_federalAwardYear
 , cdv.enrollmentCostItem_costName
 , sum(cdv.enrollmentCostItem_amount) as COA_Amt
-from [dbo].[dataExtract_COA_View] cv, [dbo].[dataExtract_COADetail_View] cdv, [dbo].[dataExtract_Student_View] sv
-where cv.externalID1 = cdv.externalID1
-and sv.externalID1 = cv.externalID1
-and cv.[enrollmentCostId] = cdv.enrollmentCost_enrollmentCostId
-and cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName
-and academicYear_federalAwardYear = @FederalAidYear
-and cv.externalID1 = @RegentID
-group by cv.externalID1
+FROM 	dbo.dataExtract_COA_View cv, 
+	dbo.dataExtract_COADetail_View cdv, 
+	dbo.dataExtract_Student_View sv
+WHERE	cv.externalID1 = cdv.externalID1
+AND	sv.externalID1 = cv.externalID1
+AND	cv.[enrollmentCostId] = cdv.enrollmentCost_enrollmentCostId
+AND	cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName
+AND	academicYear_federalAwardYear = @FederalAidYear
+AND	cv.externalID1 = @RegentID
+GROUP BY cv.externalID1
 , sv.FirstName
 , sv.LastName
 , cv.locationExternalID
@@ -56,12 +60,12 @@ group by cv.externalID1
           <DataField>FirstName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="locationExternalID">
-          <DataField>locationExternalID</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="LastName">
           <DataField>LastName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="locationExternalID">
+          <DataField>locationExternalID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="academicYear_Year">
@@ -531,6 +535,26 @@ group by cv.externalID1
     <ReportParameter Name="FederalAidYear">
       <DataType>String</DataType>
       <Prompt>Federal Aid Year</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>2015-2016</Value>
+            <Label>2015-2016</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2016-2017</Value>
+            <Label>2016-2017</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2017-2018</Value>
+            <Label>2017-2018</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2018-2019</Value>
+            <Label>2018-2019</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
     </ReportParameter>
     <ReportParameter Name="RegentID">
       <DataType>String</DataType>

@@ -19,15 +19,29 @@
             <Value>=Parameters!StudentID.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>select distinct a.externalID1, b.sisRecord_cumulativeUndergraduateGPA, a.courseExternalID, a.courseId,a.courseName, a.letterGrade, a.startDate, a.endDate, case when a.locationExternalId='UWCOL' and a.letterGrade = 'IP' and a.repeatYN = 1 then 0 else a.registeredUnits end as Attempted, case when a.qualityPoints&lt;&gt;0 then a.completedUnits else 0 end as Completed, b.paymentPeriod_name, B.paymentPeriod_startDate, B.paymentPeriod_endDate
-from dbo.dataExtract_CourseData_View a, dbo.dataExtract_AcademicPlan_View b
-where a.externalID1 = b.externalID1
-and a.externalID1 = @StudentID
-AND A.startDate between B.paymentPeriod_startDate and b.paymentPeriod_endDate
-and a.endDate &lt; getdate()
-and (a.withdrawalDate  is NULL
-or a.withdrawalDate &gt; a.startDate)
-and a.deleted = 0;</CommandText>
+        <CommandText>-- This SQL shows the student completion rate (Credits of Courses Completed / Credits of Courses Attempted) by Payment Period along with the GPA from the SIS
+-- Developed by Maria Lindquist
+SELECT DISTINCT a.externalID1
+, b.sisRecord_cumulativeUndergraduateGPA
+, a.courseExternalID
+, a.courseId
+, a.courseName
+, a.letterGrade
+, a.startDate
+, a.endDate
+, CASE WHEN a.locationExternalId='UWCOL' AND a.letterGrade = 'IP' AND a.repeatYN = 1 THEN 0 ELSE a.registeredUnits END as Attempted
+, CASE WHEN a.qualityPoints&lt;&gt;0 THEN a.completedUnits ELSE 0 END as Completed
+, b.paymentPeriod_name
+, b.paymentPeriod_startDate
+, b.paymentPeriod_endDate
+FROM dbo.dataExtract_CourseData_View a, dbo.dataExtract_AcademicPlan_View b
+WHERE	a.externalID1 = b.externalID1
+AND 	a.externalID1 = @StudentID
+AND 	a.startDate BETWEEN b.paymentPeriod_startDate AND b.paymentPeriod_endDate
+AND	a.endDate &lt; getdate()
+AND 	(a.withdrawalDate  is NULL
+OR	a.withdrawalDate &gt; a.startDate)
+AND	a.deleted = 0;</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>

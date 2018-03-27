@@ -20,7 +20,9 @@
             <Value>=Parameters!federalAwardYear.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>-- **************************************************************************************************************
+        <CommandText>-- This SQL SELECTs all the student data required for the Student Debt Letter Data Mail Merge
+-- Developed by Maria K Lindquist
+-- **************************************************************************************************************
 -- DROP temp tables
 IF OBJECT_ID('tempdb..#studentData') IS NOT NULL BEGIN DROP TABLE #studentData; END
 IF OBJECT_ID('tempdb..#studentEmail') IS NOT NULL BEGIN DROP TABLE #studentEmail; END
@@ -28,376 +30,376 @@ IF OBJECT_ID('tempdb..#instGrantsData') IS NOT NULL BEGIN DROP TABLE #instGrants
 IF OBJECT_ID('tempdb..#instGrantsUWC') IS NOT NULL BEGIN DROP TABLE #instGrantsUWC; END
 IF OBJECT_ID('tempdb..#instGrantsUWM') IS NOT NULL BEGIN DROP TABLE #instGrantsUWM; END
 IF OBJECT_ID('tempdb..#fedGrantsData') IS NOT NULL BEGIN DROP TABLE #fedGrantsData; END
-IF OBJECT_ID('tempdb..#subLoanData') IS NOT NULL BEGIN DROP TABLE #subLoanData; END
-IF OBJECT_ID('tempdb..#usubLoanData') IS NOT NULL BEGIN DROP TABLE #usubLoanData; END
+IF OBJECT_ID('tempdb..#subLoANData') IS NOT NULL BEGIN DROP TABLE #subLoANData; END
+IF OBJECT_ID('tempdb..#usubLoANData') IS NOT NULL BEGIN DROP TABLE #usubLoANData; END
 IF OBJECT_ID('tempdb..#EGrntSchData') IS NOT NULL BEGIN DROP TABLE #EGrntSchData; END
-IF OBJECT_ID('tempdb..#privLoanData') IS NOT NULL BEGIN DROP TABLE #privLoanData; END
+IF OBJECT_ID('tempdb..#privLoANData') IS NOT NULL BEGIN DROP TABLE #privLoANData; END
 IF OBJECT_ID('tempdb..#BksCOA') IS NOT NULL BEGIN DROP TABLE #BksCOA; END
 IF OBJECT_ID('tempdb..#PersCOA') IS NOT NULL BEGIN DROP TABLE #PersCOA; END
 IF OBJECT_ID('tempdb..#RBOffCOA') IS NOT NULL BEGIN DROP TABLE #RBOffCOA; END
-IF OBJECT_ID('tempdb..#RBOnCOA') IS NOT NULL BEGIN DROP TABLE #RBOnCOA; END
+IF OBJECT_ID('tempdb..#RBONCOA') IS NOT NULL BEGIN DROP TABLE #RBONCOA; END
 IF OBJECT_ID('tempdb..#TranCOA') IS NOT NULL BEGIN DROP TABLE #TranCOA; END
 IF OBJECT_ID('tempdb..#TuitCOA') IS NOT NULL BEGIN DROP TABLE #TuitCOA; END
 -- **************************************************************************************************************
 
-select distinct sv.studentId,sv.externalId1,sv.externalId2,sv.FirstName,sv.LastName,sv.locationExternalID
+SELECT DISTINCT sv.studentId,sv.externalId1,sv.externalId2,sv.FirstName,sv.LastName,sv.locatiONExternalID
 INTO #studentData
-from dataExtract_Student_View sv
-join (select cdv.studentid
-	from dataExtract_CourseData_View cdv
-	where cdv.externalTransferYN = '0'
-	and cdv.internalTransferYN = '0'
-	and cdv.startDate = convert(char(8),GETDATE(),111)+'02'
-	and cdv.withdrawalDate is null) courseData
-            on courseData.studentId = sv.studentId
-        and sv.studentId not in (select x.studentId from dataExtract_DocumentRequirement_View x
-				 where x.documentName = 'Student Debt Letter Sent'
-				   and x.receivedDate  between DateAdd(yy, -1, GetDate()) and GETDATE());
+FROM dataExtract_Student_View sv
+JOIN (SELECT cdv.studentid
+	FROM dataExtract_CourseData_View cdv
+	WHERE cdv.externalTransferYN = '0'
+	AND cdv.internalTransferYN = '0'
+	AND cdv.startDate = cONvert(char(8),GETDATE(),111)+'02'
+	AND cdv.withdrawalDate is null) courseData
+            ON courseData.studentId = sv.studentId
+        AND sv.studentId not in (SELECT x.studentId FROM dataExtract_DocumentRequirement_View x
+				 WHERE x.documentName = 'Student Debt Letter Sent'
+				   AND x.receivedDate  BETWEEN DateAdd(yy, -1, GetDate()) AND GETDATE());
 
-select studentId as EmailStudID,email as StudentEmail
+SELECT studentId as EmailStudID,email as StudentEmail
 INTO #studentEmail
-from (select distinct sv.studentId, sev.email
-        from dataExtract_Student_View sv
-        join #studentData sd 
-            on sd.studentId = sv.studentId
-	join dataExtract_StudentEmail_View_v001 sev
-            on sev.studentid = sv.studentid
-	    and sev.emailTypeCode = 'School'
-            and optOutCommunication is  null) data
-group by studentId, email;
+FROM (SELECT DISTINCT sv.studentId, sev.email
+        FROM dataExtract_Student_View sv
+        JOIN #studentData sd 
+            ON sd.studentId = sv.studentId
+	JOIN dataExtract_StudentEmail_View_v001 sev
+            ON sev.studentid = sv.studentid
+	    AND sev.emailTypeCode = 'School'
+            AND optOutCommunicatiON is  null) data
+GROUP BY studentId, email;
 
-select studentId as InstStudID,fund_name as InstFund,sum(acceptedAmount) InstAcceptAmt
+SELECT studentId as InstStudID,fund_name as InstFund,sum(acceptedAmount) InstAcceptAmt
 INTO #instGrantsData
-from (select distinct sv.studentId,fcv.fund_name,dv.awardDisbursementId,adv.acceptedAmount
-	from dataExtract_Student_View sv
-		join #studentData sd 
-			on sd.studentId = sv.studentId
-		join dataExtract_Award_View_v002 av
-			on av.studentid = sv.studentid
-			and av.deleted = 0
-			and av.awardStatusCode = 'ACCEPTED'
-			and av.acceptedAmount &gt; 0
-		join dataExtract_Fund_Config_View fcv
-			on fcv.fundId = av.fundId
-			and fcv.fund_fundSource = 'Institutional'
-			and fcv.fund_fundType in ('Grant','Scholarship','Other')
-		join dataExtract_LoanPeriod_View_v001 lp 
-			on lp.loanPeriodId = av.loanPeriodId
-			and lp.deleted = 0
-		join dataExtract_AwardDisbursement_View_v001 adv
-			on adv.awardId = av.awardId
-			and adv.deleted = 0
-		join dataExtract_Disbursement_View_v001 dv 
-			on dv.awardDisbursementId = adv.awardDisbursementId
-			and dv.deleted = 0
+FROM (SELECT DISTINCT sv.studentId,fcv.fund_name,dv.awardDisbursementId,adv.acceptedAmount
+	FROM dataExtract_Student_View sv
+		JOIN #studentData sd 
+			ON sd.studentId = sv.studentId
+		JOIN dataExtract_Award_View_v002 av
+			ON av.studentid = sv.studentid
+			AND av.deleted = 0
+			AND av.awardStatusCode = 'ACCEPTED'
+			AND av.acceptedAmount &gt; 0
+		JOIN dataExtract_Fund_CONfig_View fcv
+			ON fcv.fundId = av.fundId
+			AND fcv.fund_fundSource = 'InstitutiONal'
+			AND fcv.fund_fundType in ('Grant','Scholarship','Other')
+		JOIN dataExtract_LoanPeriod_View_v001 lp 
+			ON lp.loanPeriodId = av.loanPeriodId
+			AND lp.deleted = 0
+		JOIN dataExtract_AwardDisbursement_View_v001 adv
+			ON adv.awardId = av.awardId
+			AND adv.deleted = 0
+		JOIN dataExtract_Disbursement_View_v001 dv 
+			ON dv.awardDisbursementId = adv.awardDisbursementId
+			AND dv.deleted = 0
                         ) data
-            group by studentId,fund_name;
+            GROUP BY studentId,fund_name;
 
-select studentId as InstStudID2, TotalAmt as InstAcceptAmt2
+SELECT studentId as InstStudID2, TotalAmt as InstAcceptAmt2
 INTO #instGrantsUWC
-from (select distinct sv.studentId,uwc.TotalAmt
-                                from dataExtract_Student_View sv
-                                join #studentData sd
-                                on sd.studentID = sv.studentID
-                                join FLEXGrants_UWC uwc
-                                on uwc.ID = sv.externalId2
+FROM (SELECT DISTINCT sv.studentId,uwc.TotalAmt
+          FROM dataExtract_Student_View sv
+          	JOIN #studentData sd
+                	ON sd.studentID = sv.studentID
+                JOIN FLEXGrants_UWC uwc
+                	ON uwc.ID = sv.externalId2
          ) data;
 
-select studentId as InstStudID3, TotalAmt as InstAcceptAmt3
+SELECT studentId as InstStudID3, TotalAmt as InstAcceptAmt3
 INTO #instGrantsUWM
-from (select distinct sv.studentId,uwm.TotalAmt
-                                from dataExtract_Student_View sv
-                                join #studentData sd
-                                on sd.studentID = sv.studentID
-                                join FLEXGrants_UWM uwm
-                                on uwm.ID = sv.externalId2
+FROM (SELECT DISTINCT sv.studentId,uwm.TotalAmt
+      	FROM dataExtract_Student_View sv
+      		JOIN #studentData sd
+      			ON sd.studentID = sv.studentID
+      		JOIN FLEXGrants_UWM uwm
+      			ON uwm.ID = sv.externalId2
          ) data;
 
             
-select studentId as FGrntStudID,fund_name as FGrntFund,sum(amount) FGrntAcceptAmt
+SELECT studentId as FGrntStudID,fund_name as FGrntFund,sum(amount) FGrntAcceptAmt
 	INTO #fedGrantsData
-	from (select distinct sv.studentId,fcv.fund_name,dv.awardDisbursementId,adv.amount
-		from dataExtract_Student_View sv
-		join #studentData sd 
-			on sd.studentId = sv.studentId
-		join dataExtract_Award_View_v002 av
-			on av.studentid = sv.studentid
-                	and av.deleted = 0
-                	and av.awardStatusCode = 'ACCEPTED'
-                	--and av.acceptedAmount &gt; 0
-                join dataExtract_Fund_Config_View fcv
-                	on fcv.fundId = av.fundId
-                	and fcv.fund_fundSource = 'Federal'
-                	and fcv.fund_fundType in ('Grant','Scholarship','Other')
-                join dataExtract_LoanPeriod_View_v001 lp 
-                	on lp.loanPeriodId = av.loanPeriodId
-                	and lp.deleted = 0
-                join dataExtract_AwardDisbursement_View_v001 adv
-                	on adv.awardId = av.awardId
-                	and adv.deleted = 0
-                join dataExtract_Disbursement_View_v001 dv 
-                	on dv.awardDisbursementId = adv.awardDisbursementId
-                	and dv.deleted = 0
+	FROM (SELECT DISTINCT sv.studentId,fcv.fund_name,dv.awardDisbursementId,adv.amount
+		FROM dataExtract_Student_View sv
+		JOIN #studentData sd 
+			ON sd.studentId = sv.studentId
+		JOIN dataExtract_Award_View_v002 av
+			ON av.studentid = sv.studentid
+                	AND av.deleted = 0
+                	AND av.awardStatusCode = 'ACCEPTED'
+                	--AND av.acceptedAmount &gt; 0
+                JOIN dataExtract_Fund_CONfig_View fcv
+                	ON fcv.fundId = av.fundId
+                	AND fcv.fund_fundSource = 'Federal'
+                	AND fcv.fund_fundType in ('Grant','Scholarship','Other')
+                JOIN dataExtract_LoanPeriod_View_v001 lp 
+                	ON lp.loanPeriodId = av.loanPeriodId
+                	AND lp.deleted = 0
+                JOIN dataExtract_AwardDisbursement_View_v001 adv
+                	ON adv.awardId = av.awardId
+                	AND adv.deleted = 0
+                JOIN dataExtract_Disbursement_View_v001 dv 
+                	ON dv.awardDisbursementId = adv.awardDisbursementId
+                	AND dv.deleted = 0
                         ) data
-            group by studentId,fund_name;
+            GROUP BY studentId,fund_name;
             
-select studentId as SubLnStudID,fund_name as SubLnFund,sum(amount) SubLnAcceptAmt
+SELECT studentId as SubLnStudID,fund_name as SubLnFund,sum(amount) SubLnAcceptAmt
 	, CASE WHEN SUM(amount)*.01018641 &lt; 50.00 THEN CEILING(((LOG(50)-LOG(50-SUM (amount) *.0413/12))/LOG(1+.0413/12))*50-SUM(amount)) ELSE CEILING((SUM(amount)*.01018641)*120-SUM(amount)) END as SubLoanInt
 	, CASE WHEN SUM(amount)*.01018641 &lt; 50.00 THEN CEILING((LOG(50)-LOG(50-SUM (amount) *.0413/12))/LOG(1+.0413/12)*50) ELSE CEILING((SUM(amount)*.01018641)*120) END as SubLoanAmtRepay
-	, CASE WHEN (SUM(amount)*.01018641) &lt; 50.00 THEN 50.00 ELSE CEILING(SUM(amount)*.01018641) END as SubLoanMonPay
+	, CASE WHEN (SUM(amount)*.01018641) &lt; 50.00 THEN 50.00 ELSE CEILING(SUM(amount)*.01018641) END as SubLoanMONPay
 	, '4.08%' as SubLoanEstInt
 	, CASE WHEN SUM(amount)*.01018641 &lt; 50.00 THEN CEILING((LOG(50)-LOG(50-SUM (amount) *.0413/12))/LOG(1+.0413/12)) ELSE 120 END as SubLoanNumPay
-	INTO #subLoanData
-        from (select distinct sv.studentId,fcv.fund_name,av.awardId,dv.awardDisbursementId,adv.amount
-        	from dataExtract_Student_View sv
-        	join #studentData sd 
-        		on sd.studentId = sv.studentId
-        	join dataExtract_Award_View_v002 av
-        		on av.studentid = sv.studentid
-        		and av.deleted = 0
-        		and av.awardStatusCode = 'ACCEPTED'
-        		--and av.acceptedAmount &gt; 0
-        	join dataExtract_Fund_Config_View fcv
-        		on fcv.fundId = av.fundId
-        		and fcv.fund_fundSource = 'Federal'
-        		and fcv.fund_fundType in ('Loan')
-        		and fcv.fund_fundOfficialType = 'Direct Subsidized Loan'
-        	join dataExtract_LoanPeriod_View_v001 lp 
-        		on lp.loanPeriodId = av.loanPeriodId
-        		and lp.deleted = 0
-        	join dataExtract_AwardDisbursement_View_v001 adv
-        		on adv.awardId = av.awardId
-        		and adv.deleted = 0
-        	join dataExtract_Disbursement_View_v001 dv 
-        		on dv.awardDisbursementId = adv.awardDisbursementId
-        		and dv.deleted = 0
+	INTO #subLoANData
+        FROM (SELECT DISTINCT sv.studentId,fcv.fund_name,av.awardId,dv.awardDisbursementId,adv.amount
+        	FROM dataExtract_Student_View sv
+        	JOIN #studentData sd 
+        		ON sd.studentId = sv.studentId
+        	JOIN dataExtract_Award_View_v002 av
+        		ON av.studentid = sv.studentid
+        		AND av.deleted = 0
+        		AND av.awardStatusCode = 'ACCEPTED'
+        		--AND av.acceptedAmount &gt; 0
+        	JOIN dataExtract_Fund_CONfig_View fcv
+        		ON fcv.fundId = av.fundId
+        		AND fcv.fund_fundSource = 'Federal'
+        		AND fcv.fund_fundType in ('Loan')
+        		AND fcv.fund_fundOfficialType = 'Direct Subsidized Loan'
+        	JOIN dataExtract_LoanPeriod_View_v001 lp 
+        		ON lp.loanPeriodId = av.loanPeriodId
+        		AND lp.deleted = 0
+        	JOIN dataExtract_AwardDisbursement_View_v001 adv
+        		ON adv.awardId = av.awardId
+        		AND adv.deleted = 0
+        	JOIN dataExtract_Disbursement_View_v001 dv 
+        		ON dv.awardDisbursementId = adv.awardDisbursementId
+        		AND dv.deleted = 0
                         ) data
-	group by studentId,fund_name;
+	GROUP BY studentId,fund_name;
 	
-select studentId as USubLnStudID,fund_name as USubLnFund,sum(amount) USubLnAcceptAmt
+SELECT studentId as USubLnStudID,fund_name as USubLnFund,sum(amount) USubLnAcceptAmt
 	, CASE WHEN (SUM(amount)*1.1)*.01058213 &lt; 50.00 THEN CEILING(((LOG(50)-LOG(50-(SUM (amount)*1.1) *.0495/12))/LOG(1+.0495/12))*50-(SUM(amount)*1.1)) ELSE CEILING(((SUM(amount)*1.1)*.01058213)*120-(SUM(amount)*1.1)) END uSubLoanInt
 	, CASE WHEN (SUM(amount)*1.1)*.01058213 &lt; 50.00 THEN CEILING((LOG(50)-LOG(50-(SUM (amount)*1.1) *.0495/12))/LOG(1+.0495/12)*50) ELSE CEILING(((SUM(amount)*1.1)*.01058213)*120) END as uSubAmtRepay
-	, CASE WHEN ((SUM(amount)*1.1)*.01058213) &lt; 50.00 THEN 50.00 ELSE CEILING((SUM(amount)*1.1)*.01058213) END as uSubLnMonPay
+	, CASE WHEN ((SUM(amount)*1.1)*.01058213) &lt; 50.00 THEN 50.00 ELSE CEILING((SUM(amount)*1.1)*.01058213) END as uSubLnMONPay
 	, '5.03%' as uSubLnEstInt
 	, CASE WHEN (SUM(amount)*1.1)*.01058213 &lt; 50.00 THEN CEILING((LOG(50)-LOG(50-(SUM (amount)*1.1) *.0495/12))/LOG(1+.0495/12)) ELSE 120 END as uSubLnNumPay
 	, ROUND(sum(amount)*.1,0) as uSubLnEstDefInt
-	INTO #usubLoanData
-	from (select distinct sv.studentId,fcv.fund_name,av.awardId,dv.awardDisbursementId,adv.amount
-		from dataExtract_Student_View sv
-		join #studentData sd 
-			on sd.studentId = sv.studentId
-		join dataExtract_Award_View_v002 av
-			on av.studentid = sv.studentid
-			and av.deleted = 0
-			and av.awardStatusCode = 'ACCEPTED'
-			--and av.acceptedAmount &gt; 0
-		join dataExtract_Fund_Config_View fcv
-			on fcv.fundId = av.fundId
-			and fcv.fund_fundSource = 'Federal'
-			and fcv.fund_fundType in ('Loan')
-			and fcv.fund_fundOfficialType like 'Direct Unsubsidized Loan'
-		join dataExtract_LoanPeriod_View_v001 lp 
-			on lp.loanPeriodId = av.loanPeriodId
-			and lp.deleted = 0
-		join dataExtract_AwardDisbursement_View_v001 adv
-			on adv.awardId = av.awardId
-			and adv.deleted = 0
-		join dataExtract_Disbursement_View_v001 dv 
-			on dv.awardDisbursementId = adv.awardDisbursementId
-			and dv.deleted = 0
+	INTO #usubLoANData
+	FROM (SELECT DISTINCT sv.studentId,fcv.fund_name,av.awardId,dv.awardDisbursementId,adv.amount
+		FROM dataExtract_Student_View sv
+		JOIN #studentData sd 
+			ON sd.studentId = sv.studentId
+		JOIN dataExtract_Award_View_v002 av
+			ON av.studentid = sv.studentid
+			AND av.deleted = 0
+			AND av.awardStatusCode = 'ACCEPTED'
+			--AND av.acceptedAmount &gt; 0
+		JOIN dataExtract_Fund_CONfig_View fcv
+			ON fcv.fundId = av.fundId
+			AND fcv.fund_fundSource = 'Federal'
+			AND fcv.fund_fundType in ('Loan')
+			AND fcv.fund_fundOfficialType like 'Direct Unsubsidized Loan'
+		JOIN dataExtract_LoanPeriod_View_v001 lp 
+			ON lp.loanPeriodId = av.loanPeriodId
+			AND lp.deleted = 0
+		JOIN dataExtract_AwardDisbursement_View_v001 adv
+			ON adv.awardId = av.awardId
+			AND adv.deleted = 0
+		JOIN dataExtract_Disbursement_View_v001 dv 
+			ON dv.awardDisbursementId = adv.awardDisbursementId
+			AND dv.deleted = 0
 			) data
-	group by studentId,fund_name;
+	GROUP BY studentId,fund_name;
 	
-select studentID as EGrntSchID,ExternalResourceAdjustment_name as EGrntSchFund,sum(ExternalResourceAdjustment_amount) EGrntSchAmt
+SELECT studentID as EGrntSchID,ExternalResourceAdjustment_name as EGrntSchFund,sum(ExternalResourceAdjustment_amount) EGrntSchAmt
 	INTO #EGrntSchData
-	from(select distinct sv.studentId,rv.ExternalResourceAdjustment_name,rv.ExternalResourceAdjustment_amount --,rv.ExternalResourceAdjustment_fundSourceCode,rv.ExternalResourceAdjustment_fundTypeCode
-		from dataExtract_Student_View sv
-		join dataExtract_Resource_View rv
-			on rv.studentid = sv.studentid
-			and rv.ExternalResourceAdjustment_amount &gt; 0
-			and rv.ExternalResourceAdjustment_fundSourceCode = 'C6'
-			and rv.ExternalResourceAdjustment_fundTypeCode in ('C1','C2','C3','C4')
-		join dataExtract_PaymentPeriod_View_v001 ppv
-			on ppv.studentid = sv.studentid
-			and ppv.deleted = 0
-			and ppv.PaymentPeriodID = rv.paymentperiodid
-		join dataExtract_Enrollment_View_v001 ev
-			on ev.studentid = sv.studentid
-			and ev.deleted = 0
-			and ev.enrollmentID = ppv.enrollmentID
-		join dataExtract_AcademicYear_View_v001 ayv
-			on ayv.studentid = sv.studentid
-			and ayv.deleted = 0
-			and ayv.academicyearid = ev.academicyearid
+	FROM(SELECT DISTINCT sv.studentId,rv.ExternalResourceAdjustment_name,rv.ExternalResourceAdjustment_amount --,rv.ExternalResourceAdjustment_fundSourceCode,rv.ExternalResourceAdjustment_fundTypeCode
+		FROM dataExtract_Student_View sv
+		JOIN dataExtract_Resource_View rv
+			ON rv.studentid = sv.studentid
+			AND rv.ExternalResourceAdjustment_amount &gt; 0
+			AND rv.ExternalResourceAdjustment_fundSourceCode = 'C6'
+			AND rv.ExternalResourceAdjustment_fundTypeCode in ('C1','C2','C3','C4')
+		JOIN dataExtract_PaymentPeriod_View_v001 ppv
+			ON ppv.studentid = sv.studentid
+			AND ppv.deleted = 0
+			AND ppv.PaymentPeriodID = rv.paymentperiodid
+		JOIN dataExtract_Enrollment_View_v001 ev
+			ON ev.studentid = sv.studentid
+			AND ev.deleted = 0
+			AND ev.enrollmentID = ppv.enrollmentID
+		JOIN dataExtract_AcademicYear_View_v001 ayv
+			ON ayv.studentid = sv.studentid
+			AND ayv.deleted = 0
+			AND ayv.academicyearid = ev.academicyearid
 			) data
-		group by studentID, ExternalResourceAdjustment_name;
+		GROUP BY studentID, ExternalResourceAdjustment_name;
 		
-select studentId as PLoanStudID,fund_name as PLoanFund,sum(acceptedAmount) PLoanAcceptAmt
-	INTO #privLoanData
-	from (select distinct sv.studentId,fcv.fund_name,dv.awardDisbursementId,adv.acceptedAmount
-		from dataExtract_Student_View sv
-		join #studentData sd 
-			on sd.studentId = sv.studentId
-		join dataExtract_Award_View_v002 av
-			on av.studentid = sv.studentid
-			and av.deleted = 0
-			and av.awardStatusCode = 'ACCEPTED'
-			and av.acceptedAmount &gt; 0
-		join dataExtract_Fund_Config_View fcv
-			on fcv.fundId = av.fundId
-			and fcv.fund_fundSource = 'Private'
-			and fcv.fund_fundType in ('Loan')
-		join dataExtract_LoanPeriod_View_v001 lp 
-			on lp.loanPeriodId = av.loanPeriodId
-			and lp.deleted = 0
-		join dataExtract_AwardDisbursement_View_v001 adv
-			on adv.awardId = av.awardId
-			and adv.deleted = 0
-		join dataExtract_Disbursement_View_v001 dv 
-			on dv.awardDisbursementId = adv.awardDisbursementId
-			and dv.deleted = 0
+SELECT studentId as PLoanStudID,fund_name as PLoanFund,sum(acceptedAmount) PLoanAcceptAmt
+	INTO #privLoANData
+	FROM (SELECT DISTINCT sv.studentId,fcv.fund_name,dv.awardDisbursementId,adv.acceptedAmount
+		FROM dataExtract_Student_View sv
+		JOIN #studentData sd 
+			ON sd.studentId = sv.studentId
+		JOIN dataExtract_Award_View_v002 av
+			ON av.studentid = sv.studentid
+			AND av.deleted = 0
+			AND av.awardStatusCode = 'ACCEPTED'
+			AND av.acceptedAmount &gt; 0
+		JOIN dataExtract_Fund_CONfig_View fcv
+			ON fcv.fundId = av.fundId
+			AND fcv.fund_fundSource = 'Private'
+			AND fcv.fund_fundType in ('Loan')
+		JOIN dataExtract_LoanPeriod_View_v001 lp 
+			ON lp.loanPeriodId = av.loanPeriodId
+			AND lp.deleted = 0
+		JOIN dataExtract_AwardDisbursement_View_v001 adv
+			ON adv.awardId = av.awardId
+			AND adv.deleted = 0
+		JOIN dataExtract_Disbursement_View_v001 dv 
+			ON dv.awardDisbursementId = adv.awardDisbursementId
+			AND dv.deleted = 0
                         ) data
-            group by studentId,fund_name;
+            GROUP BY studentId,fund_name;
             
-select studentId as BksCoaStudID,sum(enrollmentCostItem_amount) as BksCoaAmt
+SELECT studentId as BksCoaStudID,sum(enrollmentCostItem_amount) as BksCoaAmt
 	INTO #BksCOA
-	from (select sv.studentId,cdv.enrollmentCostItem_amount
-		from dataExtract_Student_View sv
-		join #studentData sd 
-			on sd.studentId = sv.studentId
-		join dataExtract_COA_View cv
-			on cv.studentId = sv.studentId
-		join dataExtract_COADetail_View cdv
-			on cv.studentId = cdv.studentId
-			and cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
-			and cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
-			and cv.academicYear_federalAwardYear = @federalAwardYear
-			and cdv.enrollmentCostItem_costName = 'Books and Supplies'
+	FROM (SELECT sv.studentId,cdv.enrollmentCostItem_amount
+		FROM dataExtract_Student_View sv
+		JOIN #studentData sd 
+			ON sd.studentId = sv.studentId
+		JOIN dataExtract_COA_View cv
+			ON cv.studentId = sv.studentId
+		JOIN dataExtract_COADetail_View cdv
+			ON cv.studentId = cdv.studentId
+			AND cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
+			AND cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
+			AND cv.academicYear_federalAwardYear = @federalAwardYear
+			AND cdv.enrollmentCostItem_costName = 'Books AND Supplies'
 			) data
-		group by studentId;
+		GROUP BY studentId;
 		
-select studentId as PersCoaStudID,sum(enrollmentCostItem_amount) as PersCoaAmt
+SELECT studentId as PersCoaStudID,sum(enrollmentCostItem_amount) as PersCoaAmt
 	INTO #PersCOA
-	from (select sv.studentId,cdv.enrollmentCostItem_amount
-		from dataExtract_Student_View sv
-		join #studentData sd 
-			on sd.studentId = sv.studentId
-		join dataExtract_COA_View cv
-			on cv.studentId = sv.studentId
-		join dataExtract_COADetail_View cdv
-			on cv.studentId = cdv.studentId
-			and cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
-			and cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
-			and cv.academicYear_federalAwardYear = @federalAwardYear
-			and cdv.enrollmentCostItem_costName = 'Personal/Misc'
+	FROM (SELECT sv.studentId,cdv.enrollmentCostItem_amount
+		FROM dataExtract_Student_View sv
+		JOIN #studentData sd 
+			ON sd.studentId = sv.studentId
+		JOIN dataExtract_COA_View cv
+			ON cv.studentId = sv.studentId
+		JOIN dataExtract_COADetail_View cdv
+			ON cv.studentId = cdv.studentId
+			AND cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
+			AND cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
+			AND cv.academicYear_federalAwardYear = @federalAwardYear
+			AND cdv.enrollmentCostItem_costName = 'PersONal/Misc'
 			) data
-		group by studentID;
+		GROUP BY studentID;
 		
-select studentId as RBOffCoaStudID,sum(enrollmentCostItem_amount) as RBOffCoaAmt
+SELECT studentId as RBOffCoaStudID,sum(enrollmentCostItem_amount) as RBOffCoaAmt
 	INTO #RBOffCOA
-	from (select sv.studentId,cdv.enrollmentCostItem_amount
-		from dataExtract_Student_View sv
-		join #studentData sd 
-			on sd.studentId = sv.studentId
-		join dataExtract_COA_View cv
-			on cv.studentId = sv.studentId
-		join dataExtract_COADetail_View cdv
-			on cv.studentId = cdv.studentId
-			and cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
-			and cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
-			and cv.academicYear_federalAwardYear = @federalAwardYear
-			and cdv.enrollmentCostItem_costName = 'Room and Board - Off-campus'
+	FROM (SELECT sv.studentId,cdv.enrollmentCostItem_amount
+		FROM dataExtract_Student_View sv
+		JOIN #studentData sd 
+			ON sd.studentId = sv.studentId
+		JOIN dataExtract_COA_View cv
+			ON cv.studentId = sv.studentId
+		JOIN dataExtract_COADetail_View cdv
+			ON cv.studentId = cdv.studentId
+			AND cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
+			AND cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
+			AND cv.academicYear_federalAwardYear = @federalAwardYear
+			AND cdv.enrollmentCostItem_costName = 'Room AND Board - Off-campus'
 			) data
-		group by studentID;
+		GROUP BY studentID;
 		
-select studentId as RBOnCoaStudID,sum(enrollmentCostItem_amount) as RBOnCoaAmt
-	INTO #RBOnCOA
- 	from (select sv.studentId,cdv.enrollmentCostItem_amount
- 		from dataExtract_Student_View sv
- 		join #studentData sd 
- 			on sd.studentId = sv.studentId
-		join dataExtract_COA_View cv
-			on cv.studentId = sv.studentId
-		join dataExtract_COADetail_View cdv
-			on cv.studentId = cdv.studentId
-			and cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
-			and cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
-			and cv.academicYear_federalAwardYear = @federalAwardYear
-			and cdv.enrollmentCostItem_costName = 'Room and Board - w/parent'
+SELECT studentId as RBONCoaStudID,sum(enrollmentCostItem_amount) as RBONCoaAmt
+	INTO #RBONCOA
+ 	FROM (SELECT sv.studentId,cdv.enrollmentCostItem_amount
+ 		FROM dataExtract_Student_View sv
+ 		JOIN #studentData sd 
+ 			ON sd.studentId = sv.studentId
+		JOIN dataExtract_COA_View cv
+			ON cv.studentId = sv.studentId
+		JOIN dataExtract_COADetail_View cdv
+			ON cv.studentId = cdv.studentId
+			AND cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
+			AND cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
+			AND cv.academicYear_federalAwardYear = @federalAwardYear
+			AND cdv.enrollmentCostItem_costName = 'Room AND Board - w/parent'
 			) data
-		group by studentID;
+		GROUP BY studentID;
 		
-select studentId as TranCoaStudID,sum(enrollmentCostItem_amount) as TranCoaAmt
+SELECT studentId as TranCoaStudID,sum(enrollmentCostItem_amount) as TranCoaAmt
 	INTO #TranCOA
- 	from (select sv.studentId,cdv.enrollmentCostItem_amount
- 		from dataExtract_Student_View sv
- 		join #studentData sd 
- 			on sd.studentId = sv.studentId
-		join dataExtract_COA_View cv
-			on cv.studentId = sv.studentId
-		join dataExtract_COADetail_View cdv
-			on cv.studentId = cdv.studentId
-			and cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
-			and cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
-			and cv.academicYear_federalAwardYear = @federalAwardYear
-			and cdv.enrollmentCostItem_costName = 'Transportation'
+ 	FROM (SELECT sv.studentId,cdv.enrollmentCostItem_amount
+ 		FROM dataExtract_Student_View sv
+ 		JOIN #studentData sd 
+ 			ON sd.studentId = sv.studentId
+		JOIN dataExtract_COA_View cv
+			ON cv.studentId = sv.studentId
+		JOIN dataExtract_COADetail_View cdv
+			ON cv.studentId = cdv.studentId
+			AND cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
+			AND cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
+			AND cv.academicYear_federalAwardYear = @federalAwardYear
+			AND cdv.enrollmentCostItem_costName = 'TransportatiON'
 			) data
-		group by studentID;
+		GROUP BY studentID;
 		
-select studentId as TuitCoaStudID,sum(enrollmentCostItem_amount) as TuitCoaAmt
+SELECT studentId as TuitCoaStudID,sum(enrollmentCostItem_amount) as TuitCoaAmt
 	INTO #TuitCOA
- 	from (select sv.studentId,cdv.enrollmentCostItem_amount
- 		from dataExtract_Student_View sv
- 		join #studentData sd 
- 			on sd.studentId = sv.studentId
-		join dataExtract_COA_View cv
-			on cv.studentId = sv.studentId
-		join dataExtract_COADetail_View cdv
-			on cv.studentId = cdv.studentId
-			and cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
-			and cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
-			and cv.academicYear_federalAwardYear = @federalAwardYear
-			and cdv.enrollmentCostItem_costName = 'Tuition'
+ 	FROM (SELECT sv.studentId,cdv.enrollmentCostItem_amount
+ 		FROM dataExtract_Student_View sv
+ 		JOIN #studentData sd 
+ 			ON sd.studentId = sv.studentId
+		JOIN dataExtract_COA_View cv
+			ON cv.studentId = sv.studentId
+		JOIN dataExtract_COADetail_View cdv
+			ON cv.studentId = cdv.studentId
+			AND cv.enrollmentCostId = cdv.enrollmentCost_enrollmentCostId
+			AND cv.paymentPeriod_paymentPeriodName = cdv.enrollmentCostItem_paymentPeriodName 
+			AND cv.academicYear_federalAwardYear = @federalAwardYear
+			AND cdv.enrollmentCostItem_costName = 'TuitiON'
 			) data
-		group by studentID;
+		GROUP BY studentID;
 
-	select distinct sdv.studentId,sdv.externalId1,sdv.externalId2,sdv.FirstName,sdv.LastName,sdv.locationExternalID
-	--,case when StateStudID is not null then 1 else 0 END hasStateYN,isnull(StateAcceptAmt,0) as StateAcceptAmt
-	--,case when PrivStudID is not null then 1 else 0 END hasPrivateYN,isnull(PrivAcceptAmt,0) as PrivAcceptAmt
-	,case when InstStudID is not null then 1 else 0 END hasInstGrantsYN,isnull(InstAcceptAmt,0) as InstAcceptAmt
-	,case when InstStudID2 is not null then 1 else 0 END hasInstGrantsYN2,isnull(InstAcceptAmt2,0) as InstAcceptAmt2
-,case when InstStudID3 is not null then 1 else 0 END hasInstGrantsYN3,isnull(InstAcceptAmt3,0) as InstAcceptAmt3
-	,case when FGrntStudID is not null then 1 else 0 END hasFedGrantsYN,isnull(FGrntAcceptAmt,0) as FGrntAcceptAmt
-	,case when SubLnStudID is not null then 1 else 0 END hasFedSubLnYN,isnull(SubLnAcceptAmt,0) as SubLnAcceptAmt, isnull(SubLoanInt,0) as SubLoanInt,isnull(SubLoanAmtRepay,0) as SubLoanAmtRepay, isnull(SubLoanMonPay,0) as SubLoanMonPay,SubLoanEstInt,SubLoanNumPay
-	,case when USubLnStudID is not null then 1 else 0 END hasFedUSubLnYN,isnull(USubLnAcceptAmt,0) as USubLnAcceptAmt, isnull(uSubLoanInt,0) as uSubLoanInt,isnull(uSubAmtRepay,0) as uSubAmtRepay,isnull(uSubLnMonPay,0) as uSubLnMonPay,uSubLnEstInt,uSubLnNumPay,isnull(uSubLnEstDefInt,0) as uSubLnEstDefInt
-	,case when EGrntSchID is not null then 1 else 0 END hasEGrntSchYN,isnull(EGrntSchAmt,0) as EGrntSchAmt
-	,case when PLoanStudID is not null then 1 else 0 END hasPLoanYN,isnull(PLoanAcceptAmt,0) as PLoanAcceptAmt
-	,case when EmailStudID is not null then 'Y' else 'N' END EmailOptInYN,isnull(StudentEmail,' ') as StudentEmail 
-	,case when sdv.locationExternalId = 'UWCOL' then 1000 else 400 END as BksCoaAmt
-	,case when sdv.locationExternalId = 'UWCOL' then 3900 else 2000 END as PersCoaAmt
-	,case when sdv.locationExternalId = 'UWCOL' then 11540 else 11360 END as RBOffCoaAmt
-	,RBOnCoaAmt
-	,case when sdv.locationExternalId = 'UWCOL' then 80 else 100 END as TranCoaAmt
-	,case when sdv.locationExternalId = 'UWCOL' then 9000 else 9000 END as TuitCoaAmt
-,convert(char(8),GETDATE(),111)+'02' as CrseStartDt
-   	from #studentData sdv
-	left join #studentEmail on EmailStudID = sdv.studentID
-	--left join stateData on StateStudID = sdv.studentId
-	--left join privateData  on PrivStudID = sdv.studentId
-	left join #instGrantsData on InstStudID = sdv.studentId
-	left join #instGrantsUWC on InstStudID2 = sdv.studentId
-	left join #instGrantsUWM on InstStudID3 = sdv.studentId
-	left join #fedGrantsData on FGrntStudID = sdv.studentId
-	left join #subLoanData on SubLnStudID = sdv.studentId
-	left join #usubLoanData on USubLnStudID = sdv.studentId
-	left join #EGrntSchData on EGrntSchID = sdv.studentID
-	left join #PrivLoanData on PLoanStudID = sdv.studentID
-	left join #BksCOA on BksCoaStudID = sdv.studentId
-	left join #PersCoa on PersCoaStudID = sdv.studentId
-	left join #RBOffCoa on RBoffCoaStudID = sdv.studentId
-	left join #RBOnCoa on RBonCoaStudID = sdv.studentId 
-	left join #TranCoa on TranCoaStudID = sdv.studentId
-	left join #TuitCoa on TuitCoaStudID = sdv.studentId;</CommandText>
+	SELECT DISTINCT sdv.studentId,sdv.externalId1,sdv.externalId2,sdv.FirstName,sdv.LastName,sdv.locatiONExternalID
+	--,CASE WHEN StateStudID is not null THEN 1 ELSE 0 END hasStateYN,isnull(StateAcceptAmt,0) as StateAcceptAmt
+	--,CASE WHEN PrivStudID is not null THEN 1 ELSE 0 END hasPrivateYN,isnull(PrivAcceptAmt,0) as PrivAcceptAmt
+	,CASE WHEN InstStudID is not null THEN 1 ELSE 0 END hasInstGrantsYN,isnull(InstAcceptAmt,0) as InstAcceptAmt
+	,CASE WHEN InstStudID2 is not null THEN 1 ELSE 0 END hasInstGrantsYN2,isnull(InstAcceptAmt2,0) as InstAcceptAmt2
+,CASE WHEN InstStudID3 is not null THEN 1 ELSE 0 END hasInstGrantsYN3,isnull(InstAcceptAmt3,0) as InstAcceptAmt3
+	,CASE WHEN FGrntStudID is not null THEN 1 ELSE 0 END hasFedGrantsYN,isnull(FGrntAcceptAmt,0) as FGrntAcceptAmt
+	,CASE WHEN SubLnStudID is not null THEN 1 ELSE 0 END hasFedSubLnYN,isnull(SubLnAcceptAmt,0) as SubLnAcceptAmt, isnull(SubLoanInt,0) as SubLoanInt,isnull(SubLoanAmtRepay,0) as SubLoanAmtRepay, isnull(SubLoanMONPay,0) as SubLoanMONPay,SubLoanEstInt,SubLoanNumPay
+	,CASE WHEN USubLnStudID is not null THEN 1 ELSE 0 END hasFedUSubLnYN,isnull(USubLnAcceptAmt,0) as USubLnAcceptAmt, isnull(uSubLoanInt,0) as uSubLoanInt,isnull(uSubAmtRepay,0) as uSubAmtRepay,isnull(uSubLnMONPay,0) as uSubLnMONPay,uSubLnEstInt,uSubLnNumPay,isnull(uSubLnEstDefInt,0) as uSubLnEstDefInt
+	,CASE WHEN EGrntSchID is not null THEN 1 ELSE 0 END hasEGrntSchYN,isnull(EGrntSchAmt,0) as EGrntSchAmt
+	,CASE WHEN PLoanStudID is not null THEN 1 ELSE 0 END hasPLoanYN,isnull(PLoanAcceptAmt,0) as PLoanAcceptAmt
+	,CASE WHEN EmailStudID is not null THEN 'Y' ELSE 'N' END EmailOptInYN,isnull(StudentEmail,' ') as StudentEmail 
+	,CASE WHEN sdv.locatiONExternalId = 'UWCOL' THEN 1000 ELSE 400 END as BksCoaAmt
+	,CASE WHEN sdv.locatiONExternalId = 'UWCOL' THEN 3900 ELSE 2000 END as PersCoaAmt
+	,CASE WHEN sdv.locatiONExternalId = 'UWCOL' THEN 11540 ELSE 11360 END as RBOffCoaAmt
+	,RBONCoaAmt
+	,CASE WHEN sdv.locatiONExternalId = 'UWCOL' THEN 80 ELSE 100 END as TranCoaAmt
+	,CASE WHEN sdv.locatiONExternalId = 'UWCOL' THEN 9000 ELSE 9000 END as TuitCoaAmt
+,cONvert(char(8),GETDATE(),111)+'02' as CrseStartDt
+   	FROM #studentData sdv
+	LEFT JOIN #studentEmail ON EmailStudID = sdv.studentID
+	--LEFT JOIN stateData ON StateStudID = sdv.studentId
+	--LEFT JOIN privateData  ON PrivStudID = sdv.studentId
+	LEFT JOIN #instGrantsData ON InstStudID = sdv.studentId
+	LEFT JOIN #instGrantsUWC ON InstStudID2 = sdv.studentId
+	LEFT JOIN #instGrantsUWM ON InstStudID3 = sdv.studentId
+	LEFT JOIN #fedGrantsData ON FGrntStudID = sdv.studentId
+	LEFT JOIN #subLoANData ON SubLnStudID = sdv.studentId
+	LEFT JOIN #usubLoANData ON USubLnStudID = sdv.studentId
+	LEFT JOIN #EGrntSchData ON EGrntSchID = sdv.studentID
+	LEFT JOIN #PrivLoANData ON PLoanStudID = sdv.studentID
+	LEFT JOIN #BksCOA ON BksCoaStudID = sdv.studentId
+	LEFT JOIN #PersCoa ON PersCoaStudID = sdv.studentId
+	LEFT JOIN #RBOffCoa ON RBoffCoaStudID = sdv.studentId
+	LEFT JOIN #RBONCoa ON RBONCoaStudID = sdv.studentId 
+	LEFT JOIN #TranCoa ON TranCoaStudID = sdv.studentId
+	LEFT JOIN #TuitCoa ON TuitCoaStudID = sdv.studentId;</CommandText>
         <Timeout>36</Timeout>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -420,7 +422,7 @@ select studentId as TuitCoaStudID,sum(enrollmentCostItem_amount) as TuitCoaAmt
           <Value>=IIF((Fields!BksCoaAmt.Value+Fields!PersCoaAmt.Value+Fields!RBOffCoaAmt.Value+Fields!RBOnCoaAmt.Value+Fields!TranCoaAmt.Value+Fields!TuitCoaAmt.Value) &gt; 0, Fields!BksCoaAmt.Value+Fields!PersCoaAmt.Value+Fields!RBOffCoaAmt.Value+Fields!RBOnCoaAmt.Value+Fields!TranCoaAmt.Value+Fields!TuitCoaAmt.Value, "")</Value>
         </Field>
         <Field Name="locationExternalID">
-          <DataField>locationExternalID</DataField>
+          <DataField>locatiONExternalID</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="externalId2">
@@ -484,7 +486,7 @@ select studentId as TuitCoaStudID,sum(enrollmentCostItem_amount) as TuitCoaAmt
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="SubLoanMonPay">
-          <DataField>SubLoanMonPay</DataField>
+          <DataField>SubLoanMONPay</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="SubLoanEstInt">
@@ -512,7 +514,7 @@ select studentId as TuitCoaStudID,sum(enrollmentCostItem_amount) as TuitCoaAmt
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="uSubLnMonPay">
-          <DataField>uSubLnMonPay</DataField>
+          <DataField>uSubLnMONPay</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="uSubLnEstInt">
@@ -552,7 +554,7 @@ select studentId as TuitCoaStudID,sum(enrollmentCostItem_amount) as TuitCoaAmt
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="RBOnCoaAmt">
-          <DataField>RBOnCoaAmt</DataField>
+          <DataField>RBONCoaAmt</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="StudentEmail">
