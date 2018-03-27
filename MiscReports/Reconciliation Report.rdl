@@ -19,26 +19,62 @@
             <Value>=Parameters!location.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT DISTINCT 
-                         a.externalId1 AS RegentID, a.externalId2 AS EMPLID, b.FirstName, b.LastName, b.socialSecurityNumber, a.paymentPeriod_name AS PaymentPeriod, 
-                         CONVERT(varchar(10), a.paymentPeriod_startDate, 101) AS PPStartDt, CONVERT(varchar(10), a.paymentPeriod_endDate, 101) AS PPEndDate, 
-                         a.awardPeriod_federalAwardYear AS AidYear, a.fund_name AS Fund, a.fund_externalId1 AS ItemType, a.cod_financialAwardId AS CODAwardID, 
-                         a.award_awardStatusName AS AwardStatus, a.disbursement_disbursementStatusCode AS DisbStatus, a.disbursement_disbursementNumber AS DisbNumber, 
-                         a.disbursement_amount AS DisbGrossAmt, a.disbursement_netAmount AS DisbNetAmt, SUM(DISTINCT a.disbursement_paidAmount) AS DisbPaidAmt, 
-                         '5' + SUBSTRING(CONVERT(char(8), a.disbursement_scheduledDate, 112), 4, 1) + SUBSTRING(CONVERT(char(8), a.disbursement_scheduledDate, 112), 5, 2) 
-                         AS Term, CASE WHEN a.disbursement_adjustedReleaseDate IS NULL THEN CONVERT(varchar(10), a.disbursement_scheduledDate, 101) 
-                         ELSE CASE WHEN CONVERT(varchar(8), a.disbursement_adjustedReleaseDate, 112) = 20161001 THEN CONVERT(varchar(10), a.disbursement_scheduledDate, 101) 
-                         ELSE CONVERT(varchar(10), a.disbursement_adjustedReleaseDate, 101) END END AS SchedDisbDate, CASE WHEN a.disbursement_driReleaseDate IS NULL 
-                         THEN ' ' ELSE CONVERT(varchar(10), a.disbursement_driReleaseDate, 101) END AS DRIReleaseDate
-FROM            dataExtract_AwardDisbursement_View AS a INNER JOIN
-                         dataExtract_Student_View AS b ON a.externalId1 = b.externalId1 LEFT JOIN
-                         dataExtract_CODAwardDisbursement_View AS C ON a.externalId1 = C.externalId1
-WHERE        (a.locationExternalId = @location)  AND (a.disbursement_disbursementStatusCode NOT IN ('Cancelled', 
-                         'Declined', 'Scheduled')) 
-GROUP BY a.externalId1, a.externalId2, a.paymentPeriod_name, a.paymentPeriod_startDate, a.paymentPeriod_endDate, a.awardPeriod_federalAwardYear, a.fund_name, 
-                         a.fund_externalId1, a.cod_financialAwardId, a.award_awardStatusName, a.disbursement_disbursementNumber, a.disbursement_scheduledDate, 
-                         a.disbursement_adjustedReleaseDate, a.disbursement_driReleaseDate, a.disbursement_disbursementStatusCode, b.FirstName, b.LastName, 
-                         b.socialSecurityNumber, a.disbursement_netAmount, a.disbursement_amount
+        <CommandText>-- This SQL is used for reconciliation - it shows disbursements paid by Institution and Financial Aid Year
+-- Developed by Maria Lindquist
+SELECT DISTINCT a.externalId1 AS RegentID
+, a.externalId2 AS EMPLID
+, b.FirstName
+, b.LastName
+, b.socialSecurityNumber
+, a.paymentPeriod_name AS PaymentPeriod
+, CONVERT(varchar(10), a.paymentPeriod_startDate, 101) AS PPStartDt
+, CONVERT(varchar(10), a.paymentPeriod_endDate, 101) AS PPEndDate
+, a.awardPeriod_federalAwardYear AS AidYear
+, a.fund_name AS Fund
+, a.fund_externalId1 AS ItemType
+, a.cod_financialAwardId AS CODAwardID
+, a.award_awardStatusName AS AwardStatus
+, a.disbursement_disbursementStatusCode AS DisbStatus
+, a.disbursement_disbursementNumber AS DisbNumber
+, a.disbursement_amount AS DisbGrossAmt
+, a.disbursement_netAmount AS DisbNetAmt
+, SUM(DISTINCT a.disbursement_paidAmount) AS DisbPaidAmt
+, '5' + SUBSTRING(CONVERT(char(8), a.disbursement_scheduledDate, 112), 4, 1) + SUBSTRING(CONVERT(char(8), a.disbursement_scheduledDate, 112), 5, 2) 
+                         AS Term
+, CASE WHEN a.disbursement_adjustedReleaseDate IS NULL THEN CONVERT(varchar(10), a.disbursement_scheduledDate, 101) 
+        ELSE CASE WHEN CONVERT(varchar(8), a.disbursement_adjustedReleaseDate, 112) = 20161001 
+        THEN CONVERT(varchar(10), a.disbursement_scheduledDate, 101) 
+             ELSE CONVERT(varchar(10), a.disbursement_adjustedReleaseDate, 101) END END AS SchedDisbDate
+, CASE WHEN a.disbursement_driReleaseDate IS NULL 
+         THEN ' ' 
+         ELSE CONVERT(varchar(10), a.disbursement_driReleaseDate, 101) END AS DRIReleaseDate
+FROM            dataExtract_AwardDisbursement_View AS a 
+INNER JOIN  dataExtract_Student_View AS b 
+ON 	    a.externalId1 = b.externalId1 
+LEFT JOIN     dataExtract_CODAwardDisbursement_View AS C
+ON 	a.externalId1 = C.externalId1
+WHERE      a.locationExternalId = @location
+AND a.disbursement_disbursementStatusCode NOT IN ('Cancelled', 'Declined', 'Scheduled')
+GROUP BY a.externalId1
+, a.externalId2
+, a.paymentPeriod_name
+, a.paymentPeriod_startDate
+, a.paymentPeriod_endDate
+, a.awardPeriod_federalAwardYear
+, a.fund_name
+, a.fund_externalId1
+, a.cod_financialAwardId
+, a.award_awardStatusName
+, a.disbursement_disbursementNumber
+, a.disbursement_scheduledDate
+, a.disbursement_adjustedReleaseDate
+, a.disbursement_driReleaseDate
+, a.disbursement_disbursementStatusCode
+, b.FirstName
+, b.LastName
+, b.socialSecurityNumber
+, a.disbursement_netAmount
+, a.disbursement_amount
 ORDER BY RegentID, PPStartDt, Fund</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -141,7 +177,16 @@ ORDER BY RegentID, PPStartDt, Fund</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Reconciliation Report - </Value>
+                    <Value>=Globals!ReportName</Value>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>20pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>SteelBlue</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> - </Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                       <FontSize>20pt</FontSize>
