@@ -26,21 +26,26 @@
         <CommandText>-- This sql is used to drop the View
 IF OBJECT_ID('tempdb..#DisbData') IS NOT NULL BEGIN DROP TABLE #DisbData; END
 
-SELECT distinct dv1.studentId, dv1.externalid1, dv1.netAmount, adv1.acceptedAmount, dv1.scheduledDate, fv1.fund_name
+SELECT distinct dv1.studentId
+, dv1.externalid1
+, dv1.netAmount
+, adv1.acceptedAmount
+, dv1.scheduledDate
+, fv1.fund_name
 into #DisbData
 FROM dataExtract_Disbursement_View_v002 dv1
-		INNER JOIN dataExtract_AwardDisbursement_View_v001 adv1
-		ON adv1.studentId = dv1.studentId
-		AND adv1.paymentPeriodId = dv1.paymentPeriodId
-		AND adv1.awardDisbursementId = dv1.awardDisbursementId
-		INNER JOIN dataExtract_Award_View_v002 av1
-		ON dv1.studentId = av1.studentId
-		INNER JOIN dataExtract_LoanPeriod_View_v001 lv1
-		ON lv1.studentID = av1.studentID
-		AND lv1.loanPeriodId = av1.loanPeriodId
-		INNER JOIN dataExtract_Fund_Config_View fv1
-		ON av1.fundId = fv1.fundId
-		AND adv1.awardId = av1.awardId;
+INNER JOIN dataExtract_AwardDisbursement_View_v001 adv1
+ON adv1.studentId = dv1.studentId
+AND adv1.paymentPeriodId = dv1.paymentPeriodId
+AND adv1.awardDisbursementId = dv1.awardDisbursementId
+INNER JOIN dataExtract_Award_View_v002 av1
+ON dv1.studentId = av1.studentId
+INNER JOIN dataExtract_LoanPeriod_View_v001 lv1
+ON lv1.studentID = av1.studentID
+AND lv1.loanPeriodId = av1.loanPeriodId
+INNER JOIN dataExtract_Fund_Config_View fv1
+ON av1.fundId = fv1.fundId
+AND adv1.awardId = av1.awardId;
 
 SELECT distinct adv.externalId1
 , ed.FirstName
@@ -57,8 +62,8 @@ SELECT distinct adv.externalId1
 			END
 		END
 	END as TheTERM
-, CASE WHEN COUNT(distinct ed.Catalog) &gt; 1 THEN 2250 ELSE 900 END as Tuition
-,CASE WHEN adv.acceptedAmount &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
+,CASE WHEN COUNT(distinct ed.Catalog) &gt; 1 THEN 2250 ELSE 900 END as Tuition
+,CASE WHEN sum(adv.acceptedAmount) &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
 	THEN (SELECT sum(dd1.netAmount)
 		FROM #DisbData dd1
 		WHERE dd1.externalId1 = adv.externalId1
@@ -74,7 +79,7 @@ ELSE
 		AND dd1.fund_name like '%Pell Grant%'
 		) 
 END AS PellSchedDisbAmt
-, CASE WHEN adv.acceptedAmount &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
+, CASE WHEN sum(adv.acceptedAmount) &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
 	THEN (SELECT sum(dd1.netAmount) 
 		FROM #DisbData dd1
 		WHERE dd1.externalId1 = adv.externalId1
@@ -92,7 +97,7 @@ ELSE
 		and dd1.acceptedAmount &gt; 0
 		) 
 END AS SubSchedDisbAmt
-, CASE WHEN adv.acceptedAmount &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
+, CASE WHEN sum(adv.acceptedAmount) &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
 	THEN (SELECT sum(dd1.netAmount) 
 		FROM #DisbData dd1
 		WHERE dd1.externalId1 = adv.externalId1
@@ -110,7 +115,7 @@ ELSE
 		and dd1.acceptedAmount &gt; 0
 		) 
 END AS UnsubSchedDisbAmt
-, CASE WHEN adv.acceptedAmount &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
+, CASE WHEN sum(adv.acceptedAmount) &gt; 0 and getdate() BETWEEN CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/02' + '/201' + SUBSTRING(@CurrTerm,2,1),101) and CONVERT(VARCHAR(10),SUBSTRING(@CurrTerm,3,2) + '/12' + '/201' + SUBSTRING(@CurrTerm,2,1),101)
 	THEN (SELECT sum(dd1.netAmount) 
 		FROM #DisbData dd1
 		WHERE dd1.externalId1 = adv.externalId1
@@ -132,8 +137,8 @@ END AS PLUSSchedDisbAmt
 ,'' as AcceptedYN
 , '' as CreditsNotMetYN
 , '' as DeferredYN 
-, '' as FullAmtNotAccepted 
-,'' as VerificationCompleteYN
+,CASE WHEN sum(adv.offeredAmount) &lt;&gt; sum(adv.acceptedAmount) THEN 'Y' ELSE '' END as FullAmtNotAccepted
+ ,'' as VerificationCompleteYN
 ,'' as FAFSAMissingYN
 ,'' as R2T4
 ,'' as SAP
@@ -150,11 +155,13 @@ group by ed.EMPLID1
 , ed.FirstName
 , ed.LastName
 , ed.Term
-, adv.acceptedAmount
 order by ed.term desc, ed.LastName;</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
+        <Field Name="FATotal">
+          <Value>=Fields!PellSchedDisbAmt.Value + Fields!SubSchedDisbAmt.Value + Fields!UnsubSchedDisbAmt.Value + Fields!PLUSSchedDisbAmt.Value</Value>
+        </Field>
         <Field Name="externalId1">
           <DataField>externalId1</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -234,9 +241,6 @@ order by ed.term desc, ed.LastName;</CommandText>
         <Field Name="BookEligible">
           <DataField>BookEligible</DataField>
           <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="FATotal">
-          <Value>=Fields!PellSchedDisbAmt.Value + Fields!SubSchedDisbAmt.Value + Fields!UnsubSchedDisbAmt.Value + Fields!PLUSSchedDisbAmt.Value</Value>
         </Field>
       </Fields>
     </DataSet>
