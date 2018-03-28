@@ -256,7 +256,7 @@ order by ed.term desc, ed.LastName;</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>DRAFT*DRAFT*DRAFT</Value>
+                    <Value>DRAFT*DRAFT*DRAFT </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
@@ -267,7 +267,7 @@ order by ed.term desc, ed.LastName;</CommandText>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value> Book Charge PLUS </Value>
+                    <Value>Book Charge PLUS </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Tahoma</FontFamily>
