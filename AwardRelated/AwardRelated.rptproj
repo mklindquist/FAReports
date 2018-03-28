@@ -64,6 +64,7 @@
     <Report Include="Award Change History ALL.rdl" />
     <Report Include="Award Change History by ID.rdl" />
     <Report Include="Award Letter.rdl" />
+    <Report Include="BookChargePLUS_DRAFT.rdl" />
     <Report Include="COD Award Disb ErrorCode 039.rdl" />
     <Report Include="COD Award Disb ErrorCode Selection.rdl" />
     <Report Include="MPNandELCMissing-AwardAccept.rdl" />
